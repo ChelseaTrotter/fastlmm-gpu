@@ -92,7 +92,7 @@ function wls(y::CuArray{Float64,2},X::CuArray{Float64,2},w::CuArray{Float64,1},
     # solve
     # XXtXX = XX'*XX
     (q,r) = qr(XX)
-    b = inv(r)*At_mul_B(q*yy)
+    b = inv(r)*At_mul_B(q,yy)
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
@@ -122,8 +122,8 @@ end
 
 
         using CuArrays
-        n = 100000;
-        p = 100;
+        n = 1000;
+        p = 10;
         b = ones(p,1);
         X = randn(n*2,p);
         Y = X*b+ randn(n*2,1);
@@ -131,3 +131,5 @@ end
         x = CuArray(X);
         y = CuArray(Y);
         w = CuArray(W);
+
+        tic
