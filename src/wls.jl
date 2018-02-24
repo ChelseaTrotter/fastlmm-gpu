@@ -1,3 +1,4 @@
+
 ##################################################################
 # wls: weighted least squares        
 ##################################################################        
@@ -49,7 +50,6 @@ function wls(y::Array{Float64,2},X::Array{Float64,2},w::Array{Float64,1},
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
     rss = norm((yy-yyhat))^2
-
     if( reml )        
         sigma2 = rss/(n-p)
     else
@@ -87,12 +87,14 @@ function wls(y::CuArray{Float64,2},X::CuArray{Float64,2},w::CuArray{Float64,1},
     # yy = y.*sqrtw
     yy = sqrtw.*y
     # XX = diagm(sqrtw)*X
-    XX = CuArray(Diagonal(sqrtw))*X
+    XX = CuArrays.BLAS.dgmm('L',X,sqrtw)
         
     # solve
     # XXtXX = XX'*XX
-    (q,r) = qr(XX)
-    b = inv(r)*At_mul_B(q,yy)
+    # (q,r) = qr(XX)
+    # b = CuArrays.BLAS.trsm('L','U','N','N',1.0,r,At_mul_B(q,yy))
+    XXtXX = At_mul_B(XX,XX)
+    b = CuArrays.BLAS.trsm('L','U','N','N',1.0,XXtXX,At_mul_B(XX,yy))
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
@@ -121,15 +123,16 @@ function inv(x::CuArray)
 end
 
 
-        using CuArrays
-        n = 1000;
-        p = 10;
-        b = ones(p,1);
-        X = randn(n*2,p);
-        Y = X*b+ randn(n*2,1);
-        W = repeat([4.0; 1.0],inner=n);
-        x = CuArray(X);
-        y = CuArray(Y);
-        w = CuArray(W);
+using CuArrays
+n = 10000;
+p = 100;
+b = ones(p,1);
+X = randn(n*2,p);
+Y = X*b+ randn(n*2,1);
+W = repeat([4.0; 1.0],inner=n);
+x = CuArray(X);
+y = CuArray(Y);
+w = CuArray(W);
 
-        tic
+tic(); wls(Y,X,W);toc()
+tic(); wls(y,x,w);toc()        
