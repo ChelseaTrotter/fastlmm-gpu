@@ -67,7 +67,43 @@ function wls(y::Array{Float64,2},X::Array{Float64,2},w::Array{Float64,1},
         
 end
 
+
+
+function wls(y::Array{Float64,2},X::Array{Float64,2},
+             reml::Bool=false,loglik=false)
+
+    # number of individuals
+    n = size(y,1)
+    # number of covariates
+    p = size(X,2)
+    
+    # QR decomposition of the transformed data
+    (q,r) = qr(X)
+    b = r\At_mul_B(q,y)
+    # estimate yy and calculate rss
+    yhat = X*b
+    # yyhat = q*At_mul_B(q,yy)
+    rss = norm((y-yhat))^2
+    if( reml )        
+        sigma2 = rss/(n-p)
+    else
+        sigma2 = rss/n
+    end
+
+    # return coefficient and variance estimate
+    logdetSigma = n*log(sigma2) 
+    ell = -0.5 * ( logdetSigma + rss/sigma2 ) 
+    if ( reml )
+        ell -=  log(abs(det(r))) - (p/2)*(log(sigma2))
+    end
         
+    return Wls(b,sigma2,ell)
+        
+end
+
+
+
+
 function wls(y::CuArray{Float64,2},X::CuArray{Float64,2},w::CuArray{Float64,1},
              reml::Bool=false,loglik=false)
 
