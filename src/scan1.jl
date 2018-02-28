@@ -20,7 +20,7 @@ function scan1( y::Array{Float64,2}, g::Array{Float64,2},
     # rotate the data with respect to the kinship matrix
     (yy,gg,lambda) = rotateData(y,g,K)
     # fit null model
-    out0 = flmm(yy,gg[:,1],lambda,reml)
+    out0 = flmm(yy,gg[:,[1]],lambda,reml)
 
     w = weightCalc(out0.h2,lambda)
 
@@ -30,10 +30,14 @@ function scan1( y::Array{Float64,2}, g::Array{Float64,2},
 
     nmar = size(g,2)-1
     lod = zeros(nmar)
+
+    lod0 = wls(yy,gg[:,[1]]).ell
     
     for j=1:nmar
-        lod = wls(yy,gg[:,[1 j+1]).ell
+        lod[j] = wls(yy,gg[:,[1,j+1]]).ell
     end
+
+    return lod - lod0
 end
 
 # weight function calculator
