@@ -20,7 +20,7 @@ function simGeno( n::Int64, m::Int64, theta::Float64, p::Float64=0.5 )
 end
 
 function simPheno( n::Int64, beta::Array{Float64,2},
-                   q::Array{Float64,2} sigma2::Float64 )
+                   q::Array{Float64,2}, sigma2::Float64=1.0 )
 
     sigma = sqrt(sigma2)
 
