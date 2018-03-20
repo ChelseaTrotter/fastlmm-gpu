@@ -4,6 +4,7 @@
 ##################################################################        
 
 import Base.inv
+using CuArrays
 
 type Wls
     b::Array{Float64,2}
@@ -44,8 +45,11 @@ function wls(y::Array{Float64,2},X::Array{Float64,2},w::Array{Float64,1},
     XX = Diagonal(sqrtw)*X
         
     # QR decomposition of the transformed data
-    (q,r) = qr(XX)
-    b = r\At_mul_B(q,yy)
+    # (q,r) = qr(XX)
+    # b = r\At_mul_B(q,yy)
+
+    XXtXX = XX'*X
+    b = XXtXX\X'*y    
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
@@ -159,9 +163,9 @@ function inv(x::CuArray)
 end
 
 
-using CuArrays
+# using CuArrays
 n = 10000;
-p = 100;
+p = 1000;
 b = ones(p,1);
 X = randn(n*2,p);
 Y = X*b+ randn(n*2,1);
