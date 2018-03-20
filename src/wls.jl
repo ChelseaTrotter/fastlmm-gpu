@@ -48,8 +48,8 @@ function wls(y::Array{Float64,2},X::Array{Float64,2},w::Array{Float64,1},
     # (q,r) = qr(XX)
     # b = r\At_mul_B(q,yy)
 
-    XXtXX = XX'*X
-    b = XXtXX\X'*y    
+    XXtXX = XX'*XX
+    b = XXtXX\(XX'*yy)    
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
