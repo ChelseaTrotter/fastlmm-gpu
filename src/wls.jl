@@ -6,11 +6,7 @@
 import Base.inv
 using CuArrays
 
-type Wls
-    b::Array{Float64,2}
-    sigma2::Float64
-    ell::Float64
-end
+include("ls.jl")
             
             
 """
@@ -48,8 +44,8 @@ function wls(y::Array{Float64,2},X::Array{Float64,2},w::Array{Float64,1},
     # (q,r) = qr(XX)
     # b = r\At_mul_B(q,yy)
 
-    XXtXX = XX'*XX
-    b = XXtXX\(XX'*yy)    
+    XXtXX = At_mul_B(XX,XX)
+    b = solveleq(XXtXX,At_mul_B(XX,yy))    
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
@@ -134,7 +130,7 @@ function wls(y::CuArray{Float64,2},X::CuArray{Float64,2},w::CuArray{Float64,1},
     # (q,r) = qr(XX)
     # b = CuArrays.BLAS.trsm('L','U','N','N',1.0,r,At_mul_B(q,yy))
     XXtXX = At_mul_B(XX,XX)
-    b = CuArrays.BLAS.trsm('L','U','N','N',1.0,XXtXX,At_mul_B(XX,yy))
+    b = solveleq(XXtXX,At_mul_B(XX,yy))
     # estimate yy and calculate rss
     yyhat = XX*b
     # yyhat = q*At_mul_B(q,yy)
@@ -165,7 +161,7 @@ end
 
 # using CuArrays
 n = 10000;
-p = 1000;
+p =  2000;
 b = ones(p,1);
 X = randn(n*2,p);
 Y = X*b+ randn(n*2,1);
