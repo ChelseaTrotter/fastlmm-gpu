@@ -88,16 +88,16 @@ function inv(x::CuArray)
 end
 
 
-# using CuArrays
-n = 10000;
-p =  4000;
-b = ones(p,1);
-X = randn(n*2,p);
-Y = X*b+ randn(n*2,1);
-W = repeat([4.0; 1.0],inner=n);
-x = CuArray(X);
-y = CuArray(Y);
-w = CuArray(W);
+# # using CuArrays
+# n = 10000;
+# p =  4000;
+# b = ones(p,1);
+# X = randn(n*2,p);
+# Y = X*b+ randn(n*2,1);
+# W = repeat([4.0; 1.0],inner=n);
+# x = CuArray(X);
+# y = CuArray(Y);
+# w = CuArray(W);
 
-tic(); ls(Y,X);toc()
-tic(); ls(y,x);toc()        
+# tic(); ls(Y,X);toc()
+# tic(); ls(y,x);toc()        
