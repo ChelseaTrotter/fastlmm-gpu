@@ -1,23 +1,25 @@
 
 ##################################################################
-# ls: least squares        
-##################################################################        
+# ls: least squares
+##################################################################
 
 import Base.inv
 using CuArrays
+
+include("benchmark.jl")
 
 type Wls
     b::Array{Float64,2}
     sigma2::Float64
     ell::Float64
 end
-            
-            
+
+
 """
 ls: Weighted least squares estimation
 
-y = outcome, matrix  
-X = predictors, matrix  
+y = outcome, matrix
+X = predictors, matrix
 
 The variance estimate is maximum likelihood
 """
@@ -28,7 +30,7 @@ function ls(y::Array{Float64,2},X::Array{Float64,2}, loglik=false)
     n = size(y,1)
     # number of covariates
     p = size(X,2)
-    
+
     XtX = At_mul_B(X,X)
     b = solveleq(XtX,At_mul_B(X,y))
     # estimate yy and calculate rss
@@ -39,10 +41,10 @@ function ls(y::Array{Float64,2},X::Array{Float64,2}, loglik=false)
 
     # return coefficient and variance estimate
     logdetSigma = n*log(sigma2)
-    ell = -0.5 * ( logdetSigma + n ) 
+    ell = -0.5 * ( logdetSigma + n )
 
     return Wls(b,sigma2,ell)
-        
+
 end
 
 function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
@@ -51,7 +53,7 @@ function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
     n = size(y,1)
     # number of covariates
     p = size(X,2)
-    
+
     XtX = At_mul_B(X,X)
     b = solveleq(XtX,At_mul_B(X,y))
     # estimate yy and calculate rss
@@ -62,10 +64,10 @@ function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
 
     # return coefficient and variance estimate
     logdetSigma = n*log(sigma2)
-    ell = -0.5 * ( logdetSigma + n ) 
+    ell = -0.5 * ( logdetSigma + n )
 
     return Wls(b,sigma2,ell)
-        
+
 end
 
 
@@ -76,28 +78,36 @@ function solveleq( A::CuArray{Float64,2}, B::CuArray{Float64,2} )
     CuArrays.CUSOLVER.potrf!('L',a)
     CuArrays.CUSOLVER.potrs!('L',a,b)
     return b
-end        
+end
 
 function solveleq( A::Array{Float64,2}, B::Array{Float64,2} )
     x = A\B
     return x
-end        
-    
+end
+
 function inv(x::CuArray)
     return CuArrays.BLAS.matinv_batched([x])[2][1]
 end
 
 
-# # using CuArrays
-# n = 10000;
-# p =  4000;
-# b = ones(p,1);
-# X = randn(n*2,p);
-# Y = X*b+ randn(n*2,1);
-# W = repeat([4.0; 1.0],inner=n);
-# x = CuArray(X);
-# y = CuArray(Y);
-# w = CuArray(W);
+# using CuArrays
+n = 1024;
+p = 16;
+b = ones(p,1);
+X = randn(n*2,p);
+Y = X*b+ randn(n*2,1);
+W = repeat([4.0; 1.0],inner=n);
+x = CuArray(X);
+y = CuArray(Y);
+w = CuArray(W);
 
-# tic(); ls(Y,X);toc()
-# tic(); ls(y,x);toc()        
+tic(); cpu = ls(Y,X);toc()
+tic(); gpu = ls(y,x);toc()
+
+#convert GPU array back to host and check result
+h_b = convert(Array{Float64,2},gpu.b)
+println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
+
+#run benchmark
+println(benchmark(10, ls,Y,X))
+println(benchmark(10, ls,y,x))
