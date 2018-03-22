@@ -117,7 +117,7 @@ for n in [1024,2048,4096,8192,16384]
             #run benchmark
             cpu_result = benchmark(10, ls,Y,X)
             gpu_result = benchmark(10, ls,y,x)
-            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])");
+            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])\n");
 
 
         end
