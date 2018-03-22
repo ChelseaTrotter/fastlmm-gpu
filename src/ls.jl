@@ -91,15 +91,15 @@ end
 
 
 # using CuArrays
-n = 1024;
-p = 16;
+n = 10240;
+p = 1280;
 b = ones(p,1);
 X = randn(n*2,p);
 Y = X*b+ randn(n*2,1);
-W = repeat([4.0; 1.0],inner=n);
+#W = repeat([4.0; 1.0],inner=n);
 x = CuArray(X);
 y = CuArray(Y);
-w = CuArray(W);
+#w = CuArray(W);
 
 tic(); cpu = ls(Y,X);toc()
 tic(); gpu = ls(y,x);toc()
@@ -109,5 +109,5 @@ h_b = convert(Array{Float64,2},gpu.b)
 println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
 #run benchmark
-println(benchmark(10, ls,Y,X))
-println(benchmark(10, ls,y,x))
+benchmark(10, ls,Y,X)
+benchmark(10, ls,y,x)
