@@ -91,23 +91,31 @@ end
 
 
 # using CuArrays
-n = 10240;
-p = 1280;
-b = ones(p,1);
-X = randn(n*2,p);
-Y = X*b+ randn(n*2,1);
-#W = repeat([4.0; 1.0],inner=n);
-x = CuArray(X);
-y = CuArray(Y);
-#w = CuArray(W);
 
-tic(); cpu = ls(Y,X);toc()
-tic(); gpu = ls(y,x);toc()
+for n in [1024,2048,4096,8192,16384]
+    for p in [128, 265, 512, 1024, 2048]
+        if(n>p)
+            println("n = $n, p = $p")
 
-#convert GPU array back to host and check result
-h_b = convert(Array{Float64,2},gpu.b)
-println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
+            b = ones(p,1);
+            X = randn(n*2,p);
+            Y = X*b+ randn(n*2,1);
+            #W = repeat([4.0; 1.0],inner=n);
+            x = CuArray(X);
+            y = CuArray(Y);
+            #w = CuArray(W);
 
-#run benchmark
-benchmark(10, ls,Y,X)
-benchmark(10, ls,y,x)
+            tic(); cpu = ls(Y,X);toc()
+            tic(); gpu = ls(y,x);toc()
+
+
+            #convert GPU array back to host and check result
+            h_b = convert(Array{Float64,2},gpu.b)
+            println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
+
+            #run benchmark
+            benchmark(10, ls,Y,X)
+            benchmark(10, ls,y,x)
+        end
+    end
+end
