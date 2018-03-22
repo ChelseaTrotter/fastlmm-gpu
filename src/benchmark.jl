@@ -7,8 +7,8 @@ function benchmark(nrep::Int64, f::Function,x...; result::Bool=false)
         res[i] = toq()
     end
     if(result)
-        println(res)
+        return res
     else
-        println([minimum(res) quantile(res,[0.25  0.5 0.75]) maximum(res)])
+        return [minimum(res) quantile(res,[0.25  0.5 0.75]) maximum(res)]
     end
 end

@@ -6,6 +6,7 @@
 import Base.inv
 using CuArrays
 
+
 include("benchmark.jl")
 
 type Wls
@@ -91,7 +92,7 @@ end
 
 
 # using CuArrays
-
+file = open("benchmark_result.csv", "w")
 for n in [1024,2048,4096,8192,16384]
     for p in [128, 265, 512, 1024, 2048]
         if(n>p)
@@ -114,8 +115,12 @@ for n in [1024,2048,4096,8192,16384]
             println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
             #run benchmark
-            benchmark(10, ls,Y,X)
-            benchmark(10, ls,y,x)
+            cpu_result = benchmark(10, ls,Y,X)
+            gpu_result = benchmark(10, ls,y,x)
+            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])");
+
+
         end
     end
 end
+close(file)
