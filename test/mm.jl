@@ -1,5 +1,5 @@
 using CuArrays
-using BenchmarkTools
+#using BenchmarkTools
 
 
 
@@ -53,7 +53,7 @@ file = open("benchmark_result.csv", "w")
 for m in [1024,2048,4096,8192,16384]
     for n in [128, 265, 512, 1024, 2048]
         if(m>n)
-            println("n = $n, p = $p")
+            println("m = $m, n = $n")
 
             srand(123);
 
@@ -74,7 +74,7 @@ for m in [1024,2048,4096,8192,16384]
             #run benchmark
             cpu_result = benchmark(10, matrix_mult,A,B)
             gpu_result = benchmark(10, matrix_mult,a,b)
-            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])\n");
+            write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3])\n");
 
         end
     end

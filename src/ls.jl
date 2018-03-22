@@ -106,9 +106,14 @@ for n in [1024,2048,4096,8192,16384]
             y = CuArray(Y);
             #w = CuArray(W);
 
+
             tic(); cpu = ls(Y,X);toc()
             tic(); gpu = ls(y,x);toc()
 
+            for i = 1:10
+                tic(); cpu = ls(Y,X);toc()
+                tic(); gpu = ls(y,x);toc()
+            end
 
             #convert GPU array back to host and check result
             h_b = convert(Array{Float64,2},gpu.b)
@@ -117,6 +122,8 @@ for n in [1024,2048,4096,8192,16384]
             #run benchmark
             cpu_result = benchmark(10, ls,Y,X)
             gpu_result = benchmark(10, ls,y,x)
+            println(cpu_result)
+            println(gpu_result)
             write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])\n");
 
 
