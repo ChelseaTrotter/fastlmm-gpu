@@ -120,11 +120,12 @@ for n in [1024,2048,4096,8192,16384]
             println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
             #run benchmark
-            cpu_result = benchmark(10, ls,Y,X)
-            gpu_result = benchmark(10, ls,y,x)
+            cpu_result = benchmark(20, ls,Y,X)
+            gpu_result = benchmark(20, ls,y,x)
             println(cpu_result)
             println(gpu_result)
-            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3])\n");
+            speedup = cpu_result[3]/gpu_result[3]
+            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
 
 
         end
