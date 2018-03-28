@@ -50,8 +50,9 @@ h_c = convert(Array{Float64,2},c)
 println("Compare C: ", isapprox(C,h_c; atol = 1e-10))
 
 file = open("benchmark_result.csv", "w")
-for m in [1024,2048,4096,8192,16384]
-    for n in [128, 265, 512, 1024, 2048, 4096, 8192, 16384]
+for m in [4096]
+    for n in [8192]
+        file = open("benchmark_result.csv", "a")
         println("m = $m, n = $n")
 
         srand(123);
@@ -75,7 +76,7 @@ for m in [1024,2048,4096,8192,16384]
         gpu_result = benchmark(20, matrix_mult,a,b)
         speedup = cpu_result[3]/gpu_result[3]
         write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
-
+        close(file)
     end
 end
 close(file)
