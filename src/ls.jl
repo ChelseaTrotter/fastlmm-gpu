@@ -80,8 +80,8 @@ function solveleq( A::CuArray{Float64,2}, B::CuArray{Float64,2} )
     #CuArrays.CUSOLVER.potrs!('L',a,b)
     (a, tau) = CuArrays.CUSOLVER.geqrf!(a)
     CuArrays.CUSOLVER.ormqr!('L', 'T', a, tau, b)
-    alpha = Float64(0.0)
-    CuArrays.CUSOLVER.trsm!('L', 'U', 'N', 'N', alpha, a, b)
+    alpha = Float64(1)
+    CuArrays.BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
     return b
 end
 
@@ -96,13 +96,11 @@ end
 
 
 # using CuArrays
-# file = open("benchmark_result.csv", "w")
-# for n in [1024,2048,4096,8192,16384]
-#     for p in [128, 265, 512, 1024, 2048, 4092]
-#         if(n>p)
-            # println("n = $n, p = $p")
-            n = 1024
-            p = 128
+file = open("benchmark_result.csv", "w")
+for n in [1024,2048,4096,8192, 16384]
+    for p in [128, 265, 512, 1024, 2048]
+        if(n>p)
+            println("n = $n, p = $p")
             b = ones(p,1);
             X = randn(n*2,p);
             Y = X*b+ randn(n*2,1);
@@ -122,6 +120,8 @@ end
 
             #convert GPU array back to host and check result
             h_b = convert(Array{Float64,2},gpu.b)
+            # println("CPU result: ", cpu.b)
+            # println("GPU result: ", h_b)
             println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
             #run benchmark
@@ -130,10 +130,10 @@ end
             println(cpu_result)
             println(gpu_result)
             speedup = cpu_result[3]/gpu_result[3]
-            # write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
 
 
-#         end
-#     end
-# end
-# close(file)
+        end
+    end
+end
+close(file)
