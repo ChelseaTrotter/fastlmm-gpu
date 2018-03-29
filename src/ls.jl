@@ -5,6 +5,7 @@
 
 import Base.inv
 using CuArrays
+using Base.LinAlg
 
 
 include("benchmark.jl")
@@ -56,7 +57,7 @@ function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
     p = size(X,2)
 
     XtX = At_mul_B(X,X)
-    b = solveleq(XtX,At_mul_B(X,y))
+    b = solveleq(XtX,At_mul_B(X,y), "CH") #choose the factorization method here.
     # estimate yy and calculate rss
     yhat = X*b
     # yyhat = q*At_mul_B(q,yy)
@@ -71,23 +72,43 @@ function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
 
 end
 
-
 # function to solve linear equations using Cholesky factorization
-function solveleq( A::CuArray{Float64,2}, B::CuArray{Float64,2} )
+function solveleq( A::CuArray{Float64,2}, B::CuArray{Float64,2}, method="CH")
     b = copy(B)
     a = copy(A)
-    #CuArrays.CUSOLVER.potrf!('L',a)
-    #CuArrays.CUSOLVER.potrs!('L',a,b)
-    (a, tau) = CuArrays.CUSOLVER.geqrf!(a)
-    CuArrays.CUSOLVER.ormqr!('L', 'T', a, tau, b)
-    alpha = Float64(1)
-    CuArrays.BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
+    if(method == "CH")
+        CuArrays.CUSOLVER.potrf!('L',a)
+        CuArrays.CUSOLVER.potrs!('L',a,b)
+    else(method == "QR")
+        (a, tau) = CuArrays.CUSOLVER.geqrf!(a)
+        CuArrays.CUSOLVER.ormqr!('L', 'T', a, tau, b)
+        alpha = Float64(1)
+        CuArrays.BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
+    # else
+    #     #default method LU
+    #     (a, ipiv) = CuArrays.CUSOLVER.getrf!(a)
+    #     b = CuArrays.COSOLVER.getrs!('N', a, ipiv, b)
+    end
     return b
 end
 
-function solveleq( A::Array{Float64,2}, B::Array{Float64,2} )
-    x = A\B
-    return x
+function solveleq( A::Array{Float64,2}, B::Array{Float64,2}, method="CH")
+    a = copy(A)
+    b = copy(B)
+    if(method == "CH")
+        Base.LinAlg.LAPACK.potrf!('L', a)
+        Base.LinAlg.LAPACK.potrs!('L', a, b)
+    else(method == "QR")
+        (a, tau) = Base.LinAlg.LAPACK.geqrf!(a)
+        Base.LinAlg.LAPACK.ormqr!('L', 'T', a, tau, b)
+        alpha = Float64(1)
+        Base.LinAlg.BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
+    # else
+    #     #default method LU
+    #     #x = A\B
+    #     b = inv(a) * b
+    end
+    return b
 end
 
 function inv(x::CuArray)
@@ -113,11 +134,6 @@ for n in [1024,2048,4096,8192, 16384]
             tic(); cpu = ls(Y,X);toc()
             tic(); gpu = ls(y,x);toc()
 
-            for i = 1:10
-                tic(); cpu = ls(Y,X);toc()
-                tic(); gpu = ls(y,x);toc()
-            end
-
             #convert GPU array back to host and check result
             h_b = convert(Array{Float64,2},gpu.b)
             # println("CPU result: ", cpu.b)
@@ -125,8 +141,8 @@ for n in [1024,2048,4096,8192, 16384]
             println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
             #run benchmark
-            cpu_result = benchmark(1, ls,Y,X)
-            gpu_result = benchmark(1, ls,y,x)
+            cpu_result = benchmark(100, ls,Y,X)
+            gpu_result = benchmark(100, ls,y,x)
             println(cpu_result)
             println(gpu_result)
             speedup = cpu_result[3]/gpu_result[3]
