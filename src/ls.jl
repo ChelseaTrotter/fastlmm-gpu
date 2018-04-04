@@ -57,7 +57,7 @@ function ls(y::CuArray{Float64,2},X::CuArray{Float64,2}, loglik=false)
     p = size(X,2)
 
     XtX = At_mul_B(X,X)
-    b = solveleq(XtX,At_mul_B(X,y), "CH") #choose the factorization method here.
+    b = solveleq(XtX,At_mul_B(X,y), "QR") #choose the factorization method here.
     # estimate yy and calculate rss
     yhat = X*b
     # yyhat = q*At_mul_B(q,yy)
@@ -79,7 +79,7 @@ function solveleq( A::CuArray{Float64,2}, B::CuArray{Float64,2}, method="CH")
     if(method == "CH")
         CuArrays.CUSOLVER.potrf!('L',a)
         CuArrays.CUSOLVER.potrs!('L',a,b)
-    else(method == "QR")
+    elseif(method == "QR")
         (a, tau) = CuArrays.CUSOLVER.geqrf!(a)
         CuArrays.CUSOLVER.ormqr!('L', 'T', a, tau, b)
         alpha = Float64(1)
@@ -98,7 +98,7 @@ function solveleq( A::Array{Float64,2}, B::Array{Float64,2}, method="CH")
     if(method == "CH")
         Base.LinAlg.LAPACK.potrf!('L', a)
         Base.LinAlg.LAPACK.potrs!('L', a, b)
-    else(method == "QR")
+    elseif(method == "QR")
         (a, tau) = Base.LinAlg.LAPACK.geqrf!(a)
         Base.LinAlg.LAPACK.ormqr!('L', 'T', a, tau, b)
         alpha = Float64(1)
