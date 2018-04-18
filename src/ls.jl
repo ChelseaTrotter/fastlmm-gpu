@@ -117,10 +117,14 @@ end
 
 
 # using CuArrays
+CuArrays.CUSOLVER.potrf!('L',a)
+
+
 file = open("benchmark_result.csv", "w")
 for n in [1024,2048,4096,8192, 16384]
     for p in [128, 265, 512, 1024, 2048]
         if(n>p)
+
             println("n = $n, p = $p")
             b = ones(p,1);
             X = randn(n*2,p);
