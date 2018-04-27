@@ -6,15 +6,7 @@
 using CuArrays
 using Base.Test
 
-include("gemm-test.jl")
-# for i in 1:length(c)
-#     C[i] = (alpha*A[i]) * B[i] + beta*C[i]
-#     println(C[i])
-#     h_C = collect(c[i])
-#     println(h_C)
-#     @test C[i] ≈ h_C atol=1e-10
-# end
-# nrep::Int64, f::Function,x...; result::Bool=false
+include("../src/benchmark.jl")
 
 function run_cpu_gemm(batchsize::Int64,
                       alpha::Float64,
@@ -76,37 +68,35 @@ for count in batch_size
             push!(c, CuArray(C[i]))
         end
 
-        CuArrays.CUSOLVER.potrf_batched!('L',a)
+        #using CPU to calculate:
+        cpu_result = benchmark(rounds, run_cpu_gemm, count,alpha, A,B,beta,C)
 
-        # #using CPU to calculate:
-        # cpu_result = benchmark(rounds, run_cpu_gemm, count,alpha, A,B,beta,C)
-        #
-        # #using GPU to calculate:
-        # gpu_result = benchmark(rounds,run_gpu_gemm, count,alpha, a1,b1,beta,c1)
-        #
-        # #using GPU_batched to calculate:
-        # gpu_batched_result = benchmark(rounds, CuArrays.BLAS.gemm_batched!,'N','N', alpha,a,b,beta,c)
-        #
-        # SpeedUpToCPU = cpu_result[3]/gpu_batched_result[3]
-        # SpeedUpToGPU = gpu_result[3]/gpu_batched_result[3]
-        #
-        # file = open("gemm_batched_benchmark_result.csv", "a")
-        # write(file, "Batch_size,$count, Matrix_size,$msize,CPU_result,$(cpu_result[3]),GPU_result,$(gpu_result[3]),GPU_batched_result,$(gpu_batched_result[3]),SpeedUpToCPU,$SpeedUpToCPU,SpeedUpToGPU,$SpeedUpToGPU \n");
-        # close(file)
-        # #CuArrays.BLAS.gemm_batched!('N', 'N', alpha, a, b, beta, c)
-        #
-        # #checking correctness
-        # for i in 1:length(c)
-        #     # C[i] = (alpha*A[i]) * B[i] + beta*C[i]
-        #     # println("CPU: C[i] ",C[i])
-        #     h_c1 = collect(c1[i])
-        #     # println("GPU: c1 ",h_c1)
-        #     h_C = collect(c[i])
-        #     # println("GPU_BATCHED: h_C ",h_C)
-        #     @test C[i] ≈ h_c1 atol=1e-10
-        #     @test C[i] ≈ h_C atol=1e-10
-        #
-        # end
+        #using GPU to calculate:
+        gpu_result = benchmark(rounds,run_gpu_gemm, count,alpha, a1,b1,beta,c1)
+
+        #using GPU_batched to calculate:
+        gpu_batched_result = benchmark(rounds, CuArrays.BLAS.gemm_batched!,'N','N', alpha,a,b,beta,c)
+
+        SpeedUpToCPU = cpu_result[3]/gpu_batched_result[3]
+        SpeedUpToGPU = gpu_result[3]/gpu_batched_result[3]
+
+        file = open("gemm_batched_benchmark_result.csv", "a")
+        write(file, "Batch_size,$count, Matrix_size,$msize,CPU_result,$(cpu_result[3]),GPU_result,$(gpu_result[3]),GPU_batched_result,$(gpu_batched_result[3]),SpeedUpToCPU,$SpeedUpToCPU,SpeedUpToGPU,$SpeedUpToGPU \n");
+        close(file)
+        #CuArrays.BLAS.gemm_batched!('N', 'N', alpha, a, b, beta, c)
+
+        #checking correctness
+        for i in 1:length(c)
+            # C[i] = (alpha*A[i]) * B[i] + beta*C[i]
+            # println("CPU: C[i] ",C[i])
+            h_c1 = collect(c1[i])
+            # println("GPU: c1 ",h_c1)
+            h_C = collect(c[i])
+            # println("GPU_BATCHED: h_C ",h_C)
+            @test C[i] â‰ˆ h_c1 atol=1e-10
+            @test C[i] â‰ˆ h_C atol=1e-10
+
+        end
     end
 end
 println("done")
