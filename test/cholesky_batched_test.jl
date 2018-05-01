@@ -11,107 +11,111 @@ using Base.LinAlg
 
 include("../src/benchmark.jl")
 
-function run_gpu_potrf(uplo::Char,
-                          a::Array{Array{Float64,2},1})
-    for i in 1:length(a)
-      CuArrays.CUSOLVER.potrf!(uplo,a[i])
-    end
-end
+function run_gpu_cholesky(uplo::Char,
+                            A::Array{Array{Float64,2},1},
+                            B::Array{Array{Float64,2},1})
+    a1 = CuArray{Float64, 2}[]
+    b1 = CuArray{Float64, 2}[]
+    # c1 = CuArray{Float64, 2}[]
 
-function run_cpu_potrf(uplo::Char,
-                          A::Array{Array{Float64,2},1})
     for i in 1:length(A)
-      Base.LinAlg.LAPACK.potrf!(uplo, A[i])
+        push!(a1, CuArray(A[i]))
+        push!(b1, CuArray(B[i]))
+        # push!(c1, CuArray(C[i]))
     end
+
+    for i in 1:length(A)
+      CuArrays.CUSOLVER.potrf!(uplo,a1[i])
+      CuArrays.CUSOLVER.potrs!(uplo,a1[i],b1[i])
+    end
+    b1
 end
 
-
-function run_gpu_potrs(uplo::Char,
-                          a::Array{Array{Float64,2},1},
-                          b::Array{Array{Float64,2},1})
-    for i in 1:length(a)
-      CuArrays.CUSOLVER.potrs!('L',a[i],b[i])
-    end
-end
-
-function run_cpu_potrs(uplo::Char,
+function run_cpu_cholesky(uplo::Char,
                           A::Array{Array{Float64,2},1},
                           B::Array{Array{Float64,2},1})
+    a_copy = deepcopy(A)
+    b_copy = deepcopy(B)
+
+    for i in 1:length(a_copy)
+        Base.LinAlg.LAPACK.potrf!(uplo, a_copy[i])
+        Base.LinAlg.LAPACK.potrs!(uplo, a_copy[i], b_copy[i])
+    end
+    b_copy
+end
+
+function run_gpu_batched(uplo::Char,
+                        A::Array{Array{Float64,2},1},
+                        B::Array{Array{Float64,2},1})
+
+    a = CuArray{Float64, 2}[]
+    b = CuArray{Float64, 2}[]
+    # c = CuArray{Float64, 2}[]
+
     for i in 1:length(A)
-      Base.LinAlg.LAPACK.potrs!('L', A[i], B[i])
+        push!(a, CuArray(A[i]))
+        push!(b, CuArray(B[i]))
+        # push!(c, CuArray(C[i]))
     end
+
+    CuArrays.CUSOLVER.potrf_batched!(uplo, a)
+    CuArrays.CUSOLVER.potrs_batched!(uplo, a, b)
+    b
 end
 
+function runtest()
+    #how many matrices are we calculating:
+    batch_size = [10#=,100,500,1000,5000,10000,50000,100000,500000=#]
+    #how big are these square matrices
+    matrix_size = [8#=,32,128,265,512=#]
+    #how many rounds do you want benchmark to run
+    rounds = 10
 
-#how many matrices are we calculating:
-batch_size = [10#=,100,500,1000,5000,10000,50000,100000,500000=#]
-#how big are these square matrices
-matrix_size = [8#=,32,128,265,512=#]
-#how many rounds do you want benchmark to run
-rounds = 10
+    file = open("cholesky_batched_benchmark_result.csv", "w")
+    for count in batch_size
+        for msize in matrix_size
 
-file = open("cholesky_batched_benchmark_result.csv", "w")
-for count in batch_size
-    for msize in matrix_size
+            A = [rand(Float64,msize,msize) for i in 1:count]
+            B = [rand(Float64,msize,1) for i in 1:count]
+            # C = [rand(Float64,msize,1) for i in 1:count]
 
-        A = [rand(Float64,msize,msize) for i in 1:count]
-        B = [rand(Float64,msize,1) for i in 1:count]
-        C = [rand(Float64,msize,1) for i in 1:count]
-
-        for i in 1:length(A)
-            A[i] = A[i]*A[i]'
-        end
-
-        a1 = CuArray{Float64, 2}[]
-        b1 = CuArray{Float64, 2}[]
-        c1 = CuArray{Float64, 2}[]
-
-        a = CuArray{Float64, 2}[]
-        b = CuArray{Float64, 2}[]
-        c = CuArray{Float64, 2}[]
-
-        for i in 1:length(A)
-            push!(a1, CuArray(A[i]))
-            push!(b1, CuArray(B[i]))
-            push!(c1, CuArray(C[i]))
-
-            push!(a, CuArray(A[i]))
-            push!(b, CuArray(B[i]))
-            push!(c, CuArray(C[i]))
-        end
+            for i in 1:length(A)
+                A[i] = A[i]*A[i]'
+            end
 
 
 
-        #using GPU to calculate
-        gpu_potrf_speed = benchmark(rounds, run_gpu_potrf, 'L', a1)
-        gpu_potrs_speed = benchmark(rounds, run_gpu_potrs, 'L', a1, b1)
+            #benchmark function will return a tuple,
+            #first element is the return value of the benchmarked function,
+            #second value is the speed result of benchmarking.
 
-        #using GPU batched function
-        gpu_batched_potrf_speed = benchmark(rounds, CuArrays.CUSOLVER.potrf_batched!, 'L', a)
-        gpu_batched_potrs_speed = benchmark(rounds, CuArrays.CUSOLVER.potrs_batched!, 'L', a, b)
+            # using GPU to calculate
+            gpu_result_speed = benchmark(rounds, run_gpu_cholesky, 'L', A, B)
 
-        #using CPU to calculate
-        cpu_potrf_speed = benchmark(rounds, run_cpu_potrf, 'L', A)
-        cpu_potrs_speed = benchmark(rounds, run_cpu_potrs, 'L', A, B)
+            # #using GPU batched function
+            gpu_batched_result_speed = benchmark(rounds, run_gpu_batched, 'L', A, B)
 
+            #using CPU to calculate
+            cpu_result_speed = benchmark(rounds, run_cpu_cholesky, 'L', A, B)
 
-        println("*************** B results ******************")
-        for i in 1:length(B)
-            println("iter: $(i)")
-            h_a1 = collect(a1[i])
-            h_a = collect(a[i])
+            println("*************** B results ******************")
+            for i in 1:length(B)
+                println("iter: $(i)")
+                h_b1 = collect(gpu_result_speed[1][i])
+                h_b = collect(gpu_batched_result_speed[1][i])
+                cpu_b = cpu_result_speed[1][i]
 
-            h_b1 = collect(b1[i])
-            h_b = collect(b[i])
-            println("comparing B...")
-            # println("GPU result:", h_b1)
-            # println("GPU batch resutl:", h_b)
+                println("comparing B...")
+                println("GPU result:", h_b1)
+                println("GPU batch resutl:", h_b)
+                println("CPU result:", cpu_b)
 
-            println("Compare result CPU VS GPU: ", h_b1 ≈ B[i])
-            println("Compare result CPU VS BATCHED: ", h_b ≈ B[i])
+                println("Compare result CPU VS GPU: ", h_b1 ≈ cpu_b)
+                println("Compare result CPU VS BATCHED: ", h_b ≈ cpu_b)
 
+            end
         end
     end
+    println("done")
+    close(file)
 end
-println("done")
-close(file)
