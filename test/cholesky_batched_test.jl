@@ -65,11 +65,11 @@ end
 
 function runtest()
     #how many matrices are we calculating:
-    batch_size = [10#=,100,500,1000,5000,10000,50000,100000,500000=#]
+    batch_size = [10,100,500,1000,5000,10000,50000#=,100000,500000=#]
     #how big are these square matrices
-    matrix_size = [8#=,32,128,265,512=#]
+    matrix_size = [8,32,64,128]
     #how many rounds do you want benchmark to run
-    rounds = 10
+    rounds = 100
 
     file = open("cholesky_batched_benchmark_result.csv", "w")
     for count in batch_size
@@ -98,22 +98,30 @@ function runtest()
             #using CPU to calculate
             cpu_result_speed = benchmark(rounds, run_cpu_cholesky, 'L', A, B)
 
-            println("*************** B results ******************")
+            # println("*************** B results ******************")
             for i in 1:length(B)
-                println("iter: $(i)")
+                # println("iter: $(i)")
                 h_b1 = collect(gpu_result_speed[1][i])
                 h_b = collect(gpu_batched_result_speed[1][i])
                 cpu_b = cpu_result_speed[1][i]
 
-                println("comparing B...")
-                println("GPU result:", h_b1)
-                println("GPU batch resutl:", h_b)
-                println("CPU result:", cpu_b)
-
-                println("Compare result CPU VS GPU: ", h_b1 ≈ cpu_b)
-                println("Compare result CPU VS BATCHED: ", h_b ≈ cpu_b)
+                # println("comparing B...")
+                # println("GPU result:", h_b1)
+                # println("GPU batch resutl:", h_b)
+                # println("CPU result:", cpu_b)
+                #
+                # println("Compare result CPU VS GPU: ", h_b1 ≈ cpu_b)
+                # println("Compare result CPU VS BATCHED: ", h_b ≈ cpu_b)
 
             end
+            SpeedUpToCPU = cpu_result_speed[2][3]/gpu_batched_result_speed[2][3]
+            SpeedUpToGPU = gpu_result_speed[2][3]/gpu_batched_result_speed[2][3]
+
+            file = open("cholesky_batched_benchmark_result.csv", "a")
+            write(file, "Batch_size,$count, Matrix_size,$msize,CPU_result,$(cpu_result_speed[2][3]),
+                        GPU_result,$(gpu_result_speed[2][3]),GPU_batched_result,$(gpu_batched_result_speed[2][3]),
+                        SpeedUpToCPU,$SpeedUpToCPU,SpeedUpToGPU,$SpeedUpToGPU \n");
+            close(file)
         end
     end
     println("done")
