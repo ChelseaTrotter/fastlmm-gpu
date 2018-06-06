@@ -69,13 +69,13 @@ for count in batch_size
         end
 
         #using CPU to calculate:
-        cpu_result = benchmark(rounds, run_cpu_gemm, count,alpha, A,B,beta,C)
+        cpu_result = benchmarkWIthReturnValue(rounds, run_cpu_gemm, count,alpha, A,B,beta,C)
 
         #using GPU to calculate:
-        gpu_result = benchmark(rounds,run_gpu_gemm, count,alpha, a1,b1,beta,c1)
+        gpu_result = benchmarkWIthReturnValue(rounds,run_gpu_gemm, count,alpha, a1,b1,beta,c1)
 
         #using GPU_batched to calculate:
-        gpu_batched_result = benchmark(rounds, CuArrays.BLAS.gemm_batched!,'N','N', alpha,a,b,beta,c)
+        gpu_batched_result = benchmarkWIthReturnValue(rounds, CuArrays.BLAS.gemm_batched!,'N','N', alpha,a,b,beta,c)
 
         SpeedUpToCPU = cpu_result[3]/gpu_batched_result[3]
         SpeedUpToGPU = gpu_result[3]/gpu_batched_result[3]

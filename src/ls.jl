@@ -117,7 +117,7 @@ end
 
 
 # using CuArrays
-CuArrays.CUSOLVER.potrf!('L',a)
+# CuArrays.CUSOLVER.potrf!('L',a)
 
 
 file = open("benchmark_result.csv", "w")
@@ -133,7 +133,6 @@ for n in [1024,2048,4096,8192, 16384]
             x = CuArray(X);
             y = CuArray(Y);
             #w = CuArray(W);
-
 
             tic(); cpu = ls(Y,X);toc()
             tic(); gpu = ls(y,x);toc()

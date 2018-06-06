@@ -55,7 +55,6 @@ function run_gpu_batched(uplo::Char,
     for i in 1:length(A)
         push!(a, CuArray(A[i]))
         push!(b, CuArray(B[i]))
-        # push!(c, CuArray(C[i]))
     end
 
     CuArrays.CUSOLVER.potrf_batched!(uplo, a)
@@ -76,7 +75,7 @@ function runtest()
         for msize in matrix_size
 
             A = [rand(Float64,msize,msize) for i in 1:count]
-            B = [rand(Float64,msize,1) for i in 1:count]
+            B = [rand(Float64,msize,msize) for i in 1:count]
             # C = [rand(Float64,msize,1) for i in 1:count]
 
             for i in 1:length(A)
@@ -90,13 +89,13 @@ function runtest()
             #second value is the speed result of benchmarking.
 
             # using GPU to calculate
-            gpu_result_speed = benchmark(rounds, run_gpu_cholesky, 'L', A, B)
+            gpu_result_speed = benchmarkWIthReturnValue(rounds, run_gpu_cholesky, 'L', A, B)
 
             # #using GPU batched function
-            gpu_batched_result_speed = benchmark(rounds, run_gpu_batched, 'L', A, B)
+            gpu_batched_result_speed = benchmarkWIthReturnValue(rounds, run_gpu_batched, 'L', A, B)
 
             #using CPU to calculate
-            cpu_result_speed = benchmark(rounds, run_cpu_cholesky, 'L', A, B)
+            cpu_result_speed = benchmarkWIthReturnValue(rounds, run_cpu_cholesky, 'L', A, B)
 
             # println("*************** B results ******************")
             for i in 1:length(B)
