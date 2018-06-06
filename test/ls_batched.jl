@@ -5,6 +5,8 @@
 using CuArrays
 using Base.LinAlg
 
+include("../src/benchmark.jl")
+
 type Wls
     b::Array{Float64,2}
     sigma2::Float64
@@ -152,33 +154,57 @@ function ls(y::Array{CuArray{Float64,2}, 1},X::Array{CuArray{Float64,2}, 1}, bat
 end
 
 # function runtest()
-    batchsizes = [10,100,500,1000]
-    matrix_size = [32,64,128]
+    file = open("ls_batched_result.csv", "w")
+
+    batchsizes = [10,100,500#=,1000,5000,10000,50000,100000,500000=#]
+    matrix_size = [8#=,32,64,128=#]
 
     for bs in batchsizes
-        for n in [4]
-            for p in [2]
+        for n in [1024,2048,4096,8192, 16384]
+            for p in [128, 265, 512, 1024, 2048]
 
-                X_array = Array{Array{Float64,2},1}(bs)
-                Y_array = Array{Array{Float64,2},1}(bs)
+                if(n>p)
 
-                d_x = Array{CuArray{Float64, 2},1}(bs)
-                d_y = Array{CuArray{Float64, 2},1}(bs)
+                    X_array = Array{Array{Float64,2},1}(bs)
+                    Y_array = Array{Array{Float64,2},1}(bs)
 
-                println("n = $n, p = $p")
+                    d_x = Array{CuArray{Float64, 2},1}(bs)
+                    d_y = Array{CuArray{Float64, 2},1}(bs)
 
-                b = ones(p,1)
-                for i in 1:bs
-                    X = randn(n*2, p);
-                    Y = X*b + randn(n*2, 1)
-                    X_array[i] = X
-                    Y_array[i] = Y
-                    d_x[i] = CuArray(X)
-                    d_y[i] = CuArray(Y)
+                    println("n = $n, p = $p")
+
+                    b = ones(p,1)
+                    for i in 1:bs
+                        X = randn(n*2, p);
+                        Y = X*b + randn(n*2, 1)
+                        X_array[i] = X
+                        Y_array[i] = Y
+                        d_x[i] = CuArray(X)
+                        d_y[i] = CuArray(Y)
+                    end
+
+                    # tic();cpu_result = ls(Y_array,X_array);toc()
+                    # tic();gpu_result = ls(d_y, d_x);toc()
+
+
+                    # # printing out correctness
+                    # for i in 1:bs
+                    #      println("Compare result: ", isapprox(cpu_result[i].b,convert(Array{Float64,2}, gpu_result[i].b)))
+                    # end
+
+                    cpu_speed = benchmark(20, ls, Y_array,X_array)
+                    gpu_speed = benchmark(20, ls, d_y, d_x)
+
+                    # println(cpu_speed)
+                    # println(gpu_speed)
+
+                    speedup = cpu_speed[3]/gpu_speed[3]
+
+                    println("n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), Speedup: $speedup\n");
+
+                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), Speedup: $speedup\n");
+
                 end
-
-                tic();ls(Y_array,X_array);toc()
-                tic();ls(d_y, d_x);toc()
 
             end
         end
