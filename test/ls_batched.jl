@@ -193,16 +193,19 @@ end
                     # end
 
                     cpu_speed = benchmark(20, ls, Y_array,X_array)
-                    gpu_speed = benchmark(20, ls, d_y, d_x)
+                    gpu_speed = benchmark(20, ls, d_y, d_x, "GPU")
+                    gpu_batched_speed = benchmark(20, ls, d_y, d_x)
 
                     # println(cpu_speed)
                     # println(gpu_speed)
 
-                    speedup = cpu_speed[3]/gpu_speed[3]
+                    cpu_vs_gpu = cpu_speed[3]/gpu_speed[3]
+                    cpu_vs_batched = cpu_speed[3]/gpu_batched_speed[3]
 
-                    println("n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), Speedup: $speedup\n");
 
-                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), Speedup: $speedup\n");
+                    println("n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]),cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n");
+
+                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n"\n");
 
                 end
 
