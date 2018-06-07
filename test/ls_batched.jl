@@ -156,60 +156,59 @@ end
 # function runtest()
     file = open("ls_batched_result.csv", "w")
 
-    batchsizes = [10,100,500#=,1000,5000,10000,50000,100000,500000=#]
+    batchsizes = [10,100,500,1000,5000,10000,50000,100000,500000]
     #matrix_size = [8#=,32,64,128=#]
 
     for bs in batchsizes
-        for n in [1024,2048,4096,8192, 16384]
-            for p in [128, 265, 512, 1024, 2048]
+        for n in [32,64,128,256,512,1024,2048,4096,8192]
+            for p in [2,4,8,16,32,128,265]
 
-                if(n>p)
+                X_array = Array{Array{Float64,2},1}(bs)
+                Y_array = Array{Array{Float64,2},1}(bs)
 
-                    X_array = Array{Array{Float64,2},1}(bs)
-                    Y_array = Array{Array{Float64,2},1}(bs)
+                d_x = Array{CuArray{Float64, 2},1}(bs)
+                d_y = Array{CuArray{Float64, 2},1}(bs)
 
-                    d_x = Array{CuArray{Float64, 2},1}(bs)
-                    d_y = Array{CuArray{Float64, 2},1}(bs)
+                println("n = $n, p = $p")
 
-                    println("n = $n, p = $p")
-
-                    b = ones(p,1)
-                    for i in 1:bs
-                        X = randn(n*2, p);
-                        Y = X*b + randn(n*2, 1)
-                        X_array[i] = X
-                        Y_array[i] = Y
-                        d_x[i] = CuArray(X)
-                        d_y[i] = CuArray(Y)
-                    end
-
-                    # tic();cpu_result = ls(Y_array,X_array);toc()
-                    # tic();gpu_result = ls(d_y, d_x);toc()
-
-
-                    # # printing out correctness
-                    # for i in 1:bs
-                    #      println("Compare result: ", isapprox(cpu_result[i].b,convert(Array{Float64,2}, gpu_result[i].b)))
-                    # end
-
-                    cpu_speed = benchmark(20, ls, Y_array,X_array)
-                    gpu_speed = benchmark(20, ls, d_y, d_x, "GPU")
-                    gpu_batched_speed = benchmark(20, ls, d_y, d_x)
-
-                    # println(cpu_speed)
-                    # println(gpu_speed)
-
-                    cpu_vs_gpu = cpu_speed[3]/gpu_speed[3]
-                    cpu_vs_batched = cpu_speed[3]/gpu_batched_speed[3]
-
-
-                    println("n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]),cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n");
-
-                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n");
-
+                b = ones(p,1)
+                for i in 1:bs
+                    X = randn(n*2, p);
+                    Y = X*b + randn(n*2, 1)
+                    X_array[i] = X
+                    Y_array[i] = Y
+                    d_x[i] = CuArray(X)
+                    d_y[i] = CuArray(Y)
                 end
+
+                # tic();cpu_result = ls(Y_array,X_array);toc()
+                # tic();gpu_result = ls(d_y, d_x);toc()
+
+
+                # # printing out correctness
+                # for i in 1:bs
+                #      println("Compare result: ", isapprox(cpu_result[i].b,convert(Array{Float64,2}, gpu_result[i].b)))
+                # end
+
+                cpu_speed = benchmark(20, ls, Y_array,X_array)
+                gpu_speed = benchmark(20, ls, d_y, d_x, "GPU")
+                gpu_batched_speed = benchmark(20, ls, d_y, d_x)
+
+                # println(cpu_speed)
+                # println(gpu_speed)
+
+                cpu_vs_gpu = cpu_speed[3]/gpu_speed[3]
+                cpu_vs_batched = cpu_speed[3]/gpu_batched_speed[3]
+                gpu_vs_batched = gpu_speed[3]/gpu_batched_speed[3]
+
+
+                println("bs:$bs,n:$n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]),
+                cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched, gpu vs batched: $gpu_vs_batched\n");
+
+                write(file, "$bs, $n, $p, $(cpu_speed[3]), $(gpu_speed[3]), Speedup, $cpu_vs_gpu, $cpu_vs_batched, $gpu_vs_batched\n");
 
             end
         end
     end
+    close(file)
 # end
