@@ -157,7 +157,7 @@ end
     file = open("ls_batched_result.csv", "w")
 
     batchsizes = [10,100,500#=,1000,5000,10000,50000,100000,500000=#]
-    matrix_size = [8#=,32,64,128=#]
+    #matrix_size = [8#=,32,64,128=#]
 
     for bs in batchsizes
         for n in [1024,2048,4096,8192, 16384]
@@ -205,7 +205,7 @@ end
 
                     println("n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]),cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n");
 
-                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n"\n");
+                    write(file, "n: $n, p: $p, CPU: $(cpu_speed[3]), GPU: $(gpu_speed[3]), cpu vs gpu: $cpu_vs_gpu, cpu vs batched: $cpu_vs_batched\n");
 
                 end
 
