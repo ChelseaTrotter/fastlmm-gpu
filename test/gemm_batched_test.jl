@@ -32,15 +32,13 @@ end
 
 alpha = rand(Float64)
 beta = rand(Float64)
-# m = 3
-# k = 4
-# n = 5
+
 #how many matrices are we calculating:
 batch_size = [10,100,500,1000,5000,10000,50000,100000,500000]
 #how big are these square matrices
-matrix_size = [8,32,128,265,512]
+matrix_size = [8,32,128,265]
 #how many rounds do you want benchmark to run
-rounds = 10
+rounds = 20
 
 file = open("gemm_batched_benchmark_result.csv", "w")
 for count in batch_size
@@ -86,17 +84,17 @@ for count in batch_size
         #CuArrays.BLAS.gemm_batched!('N', 'N', alpha, a, b, beta, c)
 
         #checking correctness
-        for i in 1:length(c)
-            # C[i] = (alpha*A[i]) * B[i] + beta*C[i]
-            # println("CPU: C[i] ",C[i])
-            h_c1 = collect(c1[i])
-            # println("GPU: c1 ",h_c1)
-            h_C = collect(c[i])
-            # println("GPU_BATCHED: h_C ",h_C)
-            @test C[i] â‰ˆ h_c1 atol=1e-10
-            @test C[i] â‰ˆ h_C atol=1e-10
+#        for i in 1:length(c)
+#            # C[i] = (alpha*A[i]) * B[i] + beta*C[i]
+#            # println("CPU: C[i] ",C[i])
+#            h_c1 = collect(c1[i])
+#            # println("GPU: c1 ",h_c1)
+#            h_C = collect(c[i])
+#            # println("GPU_BATCHED: h_C ",h_C)
+#            @test C[i] â‰ˆ h_c1 atol=1e-10
+#            @test C[i] â‰ˆ h_C atol=1e-10
 
-        end
+#        end
     end
 end
 println("done")

@@ -156,12 +156,12 @@ end
 # function runtest()
     file = open("ls_batched_result.csv", "w")
 
-    batchsizes = [10,100,500,1000,5000,10000,50000,100000,500000]
+    batchsizes = [10000,50000,100000,500000]
     #matrix_size = [8#=,32,64,128=#]
 
     for bs in batchsizes
-        for n in [32,64,128,256,512,1024,2048,4096,8192]
-            for p in [2,4,8,16,32,128,265]
+        for n in [32,64,128,256,512,1024,2048]
+            for p in [2,4,8,16,32,64]
                 if (n >= p)
                     X_array = Array{Array{Float64,2},1}(bs)
                     Y_array = Array{Array{Float64,2},1}(bs)

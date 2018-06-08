@@ -64,11 +64,11 @@ end
 
 function runtest()
     #how many matrices are we calculating:
-    batch_size = [10,100,500,1000,5000,10000,50000#=,100000,500000=#]
+    batch_size = [10,100,500,1000,5000,10000,50000,100000,500000]
     #how big are these square matrices
-    matrix_size = [8,32,64,128]
+    matrix_size = [32,64,128,256]
     #how many rounds do you want benchmark to run
-    rounds = 100
+    rounds = 20
 
     file = open("cholesky_batched_benchmark_result.csv", "w")
     for count in batch_size

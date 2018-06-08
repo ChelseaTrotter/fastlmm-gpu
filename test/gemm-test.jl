@@ -11,7 +11,7 @@ function matrix_mult(a::CuArray{Float64, 2}, b::CuArray{Float64, 2})
     return res
 end
 
-
+#=
 file = open("gemm_benchmark_result.csv", "w")
 for m in [1024, 2048, 4096, 8192, 16384]
     for n in [128, 256, 512, 1024, 2048]
@@ -45,3 +45,4 @@ for m in [1024, 2048, 4096, 8192, 16384]
     end
 end
 close(file)
+=#
