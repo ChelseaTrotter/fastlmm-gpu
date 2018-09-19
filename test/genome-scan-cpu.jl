@@ -28,8 +28,8 @@ using Profile
 
 n_max = 12800
 m_max = 25600
-
-matrix_size_range = [100, 200, 400, 800, 1600#=, 3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+# Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
+matrix_size_range = [#=100, 200, 400, 800, 1600,=# 3200, 6400, 12800, 25600#=, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 
 
@@ -46,7 +46,7 @@ for i in matrix_size_range
         m = m_max
     end
 
-    println("$n, $m, $r")
+    println("*************************** $n, $m, $r******************************")
     
     Y = rand(n, m)
     G = rand(n, r)
@@ -56,19 +56,20 @@ for i in matrix_size_range
 
     #run all functions once to prepare for profiling
     #step 1: calculate standardized version of Y and G
-    Y_standard = (Y .- mean(Y)) / std(Y);
-    G_standard = (G .- mean(G)) / std(G);
+    @time Y_standard = (Y .- mean(Y)) / std(Y);
+    @time G_standard = (G .- mean(G)) / std(G);
 
     #step 2: calculate R, matrix of corelation coefficients 
-    R = Y_standard' * G_standard;
+    @time R = Y_standard' * G_standard;
 
     #step 3: calculate proportion of variance explained 
-    R.*R;
+    @time R.*R;
 
 
     #run all functions a second time for profiling. 
     #step 1: calculate standardized version of Y and G
 
+  
     println("=======Get Standardized Y Matrix ======")
     @profile Y_standard = (Y .- mean(Y)) / std(Y);
     Profile.print()
@@ -90,6 +91,7 @@ for i in matrix_size_range
     @profile R.*R; 
     Profile.print()
     Profile.clear()
+
 
 
 
