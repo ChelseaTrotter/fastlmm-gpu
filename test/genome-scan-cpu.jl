@@ -8,6 +8,8 @@
 
 using Statistics
 using Profile 
+# using ProfileView 
+
 #using ProfileView # too many compilation error when installing package. giving up on this one. 
 
 #using BenchmarkTools 
@@ -29,7 +31,7 @@ function calculate_r(a,b)
     return a' * b
 end
 
-function run(a, b)
+function myrun(a, b)
 
     a_standard = get_standardized_matrix(a)
     b_standard = get_standardized_matrix(b)
@@ -41,7 +43,7 @@ end
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800, 1600,=# 3200, 6400#=, 12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800, 1600,=# 3200, 6400, 12800#=, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 
 
@@ -63,31 +65,60 @@ for i in matrix_size_range
     Y = rand(n, m)
     G = rand(n, r)
 
+    # run(Y,G)
+    # Profile.clear()
+    # @profile run(Y,G)
+    # ProfileView.view()
+
     # println("Y\n", Y)
     # println("G\n", G)
- 
+
+    #step 1: calculate standardized version of Y and G
+    Y_standard = get_standardized_matrix(Y);
+    G_standard = get_standardized_matrix(G);
+
+    #step 2: calculate R, matrix of corelation coefficients 
+    R = calculate_r(Y_standard, G_standard);
+
+    #step 3: calculate proportion of variance explained 
+    R.*R;
+
+    #time it
+
+    #step 1: calculate standardized version of Y and G
+    @time Y_standard = (Y .- mean(Y)) / std(Y);
+    @time G_standard = (G .- mean(G)) / std(G);
+
+    #step 2: calculate R, matrix of corelation coefficients 
+    @time R = Y_standard' * G_standard;
+
+    #step 3: calculate proportion of variance explained 
+    @time R.*R;
+
+    
+    # open("/Users/xiaoqihu/Documents/hg/fastlmm-gpu/test/genome-scan-cpu-[profiling-result.txt", "w") do 
     #run all functions a second time for profiling. 
     #step 1: calculate standardized version of Y and G
     println("=======Get Standardized Y Matrix ======")
-    Y_standard = get_standardized_matrix(Y);
-    Profile.clear()
+    # Profile.clear()
     @profile Y_standard = get_standardized_matrix(Y);
-    Profile.print(format=:flat)
+    # open("/Users/xiaoqihu/Documents/hg/fastlmm-gpu/test/genome-scan-cpu-[profiling-result.txt", "a") do s 
+    #     Profile.print(IOContext(s, :displaysize => (24, 500)))
+    # end
+    Profile.print()   
     
- 
+
     println("=======Get Standardized G Matrix ======")
-    G_standard = get_standardized_matrix(G);
     Profile.clear()
     @profile G_standard = get_standardized_matrix(G);
-    Profile.print(format=:flat)
+    Profile.print()
     
  
     #step 2: calculate R, matrix of corelation coefficients 
     println("=======Calculate R ======")
-    R = calculate_r(Y_standard, G_standard);
     Profile.clear()
     @profile R = calculate_r(Y_standard, G_standard);
-    Profile.print(format=:flat)
+    Profile.print(C = true)
     
  
     #step 3: calculate proportion of variance explained 
@@ -95,9 +126,9 @@ for i in matrix_size_range
     R.*R;
     Profile.clear()
     @profile R.*R; 
-    Profile.print(format=:flat)
+    Profile.print()
     
-  
+
 
 
 end
@@ -123,24 +154,24 @@ end
   
     println("=======Get Standardized Y Matrix ======")
     @profile Y_standard = (Y .- mean(Y)) / std(Y);
-    Profile.print(format=:flat)
+    Profile.print()
     Profile.clear()
 
     println("=======Get Standardized G Matrix ======")
     @profile G_standard = (G .- mean(G)) / std(G);
-    Profile.print(format=:flat)
+    Profile.print()
     Profile.clear()
 
     #step 2: calculate R, matrix of corelation coefficients 
     println("=======Calculate R ======")
     @profile R = Y_standard' * G_standard;
-    Profile.print(format=:flat)
+    Profile.print()
     Profile.clear()
 
     #step 3: calculate proportion of variance explained 
     println("=======Calculate proportion of variance explained ======")
     @profile R.*R; 
-    Profile.print(format=:flat)
+    Profile.print()
     Profile.clear()
 
 =#
