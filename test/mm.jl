@@ -1,4 +1,5 @@
 using CuArrays
+using Random
 #using BenchmarkTools
 
 
@@ -12,13 +13,13 @@ function matrix_mult(a::CuArray{Float64, 2}, b::CuArray{Float64, 2})
     return res
 end
 
-#using tic toc in a for loop
+#measure time in a for loop
 function benchmark(nrep::Int64, f::Function,x...; result::Bool=false)
     res = Array{Float64}(nrep)
     for i=1:nrep
-        tic()
+        start = time_ns()
         f(x...)
-        res[i] = toq()
+        res[i] = time_ns() - start
     end
     if(result)
         return res
@@ -38,8 +39,8 @@ b = CuArray(B)
 #println("A : ", A)
 #println("B : ", B)
 
-tic(); C = A'*B; toc()
-tic(); c = a'*b; toc()
+@elapsed C = transpose(A) * B; 
+@elapsed c = transpose(a) * b; 
 
 #println("C: ",C)
 #println("C: ",C)
@@ -64,8 +65,8 @@ for m in [4096]
         #println("A : ", A)
         #println("B : ", B)
 
-        tic(); C = A'*B; toc()
-        tic(); c = a'*b; toc()
+        @elapsed C = A'*B;
+        @elapsed c = a'*b; 
 
         #convert GPU array back to host and check result
         h_c = convert(Array{Float64,2},c)

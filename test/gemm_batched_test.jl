@@ -15,7 +15,7 @@ function run_cpu_gemm(batchsize::Int64,
                       beta::Float64,
                       C::Array{Array{Float64,2},1})
     for i = 1:batchsize
-        Base.LinAlg.BLAS.gemm!('N','N', alpha, A[i],B[i],beta,C[i])
+        LinearAlgebra.BLAS.gemm!('N','N', alpha, A[i],B[i],beta,C[i])
     end
 end
 

@@ -36,7 +36,7 @@ for m in [1024, 2048, 4096, 8192, 16384]
             println("Compare result: ", isapprox(C,h_c; atol = 1e-10))
 
             #run benchmark
-            cpu_result = benchmark(100, Base.LinAlg.BLAS.gemm,'T','N', 1.0, A,B)
+            cpu_result = benchmark(100, LinearAlgebra.BLAS.gemm,'T','N', 1.0, A,B)
             gpu_result = benchmark(100, CuArrays.BLAS.gemm,'T','N', 1.0, a,b)
             speedup = cpu_result[3]/gpu_result[3]
             write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");

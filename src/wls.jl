@@ -158,26 +158,27 @@ function inv(x::CuArray)
     return CuArrays.BLAS.matinv_batched([x])[2][1]
 end
 
+function run_wls()
+    # using CuArrays
+    n = 20000;
+    p = 4000;
+    b = ones(p,1);
+    X = randn(n*2,p);
+    Y = X*b+ randn(n*2,1);
+    W = repeat([4.0; 1.0],inner=n);
+    x = CuArray(X);
+    y = CuArray(Y);
+    w = CuArray(W);
 
-# using CuArrays
-n = 20000;
-p = 4000;
-b = ones(p,1);
-X = randn(n*2,p);
-Y = X*b+ randn(n*2,1);
-W = repeat([4.0; 1.0],inner=n);
-x = CuArray(X);
-y = CuArray(Y);
-w = CuArray(W);
-
-tic(); cpu = ls(Y,X);toc()
-tic(); gpu = ls(y,x);toc()
+    tic(); cpu = ls(Y,X);toc()
+    tic(); gpu = ls(y,x);toc()
 
 
-#verify result is correct
-#h_b = convert(Array{Float64,2},gpu.b)
-#println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
+    #verify result is correct
+    #h_b = convert(Array{Float64,2},gpu.b)
+    #println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
-#do benchmark
-#@benchmark wls(Y,X,W)
-#@benchmark wls(y,x,w)
+    #do benchmark
+    #@benchmark wls(Y,X,W)
+    #@benchmark wls(y,x
+end

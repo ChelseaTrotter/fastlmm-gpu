@@ -8,11 +8,12 @@
 
 using Statistics
 using Profile 
+using CuArrays
 # using ProfileView 
 
 #using ProfileView # too many compilation error when installing package. giving up on this one. 
 
-#using BenchmarkTools 
+using BenchmarkTools 
 # temporaryly giving up on BenchmarkTools package, because it requires me to make modification to the code.
 # eg:  Y_standard = (Y .- mean(Y)) / std(Y); 
 # will change to @btime Y_standard = ($Y .- mean($Y)) / std($Y);
@@ -27,9 +28,27 @@ function get_standardized_matrix(m)
     return (m .- mean(m)) ./ std(m)
 end
 
-function calculate_r(a,b)
+function calculate_r(a::Array,b::Array)
     return a' * b
 end
+
+function calculate_r(a::CuArray,b::CuArray)
+    return collect(CuArrays.BLAS.gemm('T', 'N', a,b))
+end
+
+function my_isapprox(x,y)
+    return isapprox(x,y, atol=1e-5)
+end
+
+function check_correctness(a, b)
+    if(all(map(my_isapprox, a, b)))
+        return "true"
+    else
+        return "false"
+    end
+end
+
+
 
 function myrun(a, b)
 
@@ -38,6 +57,7 @@ function myrun(a, b)
     r = calculate_r(a,b)
     return r.*r
 end
+
 
 
 n_max = 12800
@@ -52,7 +72,7 @@ for i in matrix_size_range
     n = i 
     m = i
     r = i
-
+ 
     if(n > n_max)
         n = n_max
     end
@@ -77,34 +97,36 @@ for i in matrix_size_range
     Y_standard = get_standardized_matrix(Y);
     G_standard = get_standardized_matrix(G);
 
+    d_y = CuArray(Y_standard);
+    d_g = CuArray(G_standard);
+
     #step 2: calculate R, matrix of corelation coefficients 
-    R = calculate_r(Y_standard, G_standard);
+    R1 = calculate_r(Y_standard, G_standard);
+    R2 = calculate_r(d_y, d_g);
 
     #step 3: calculate proportion of variance explained 
-    R.*R;
+    r1_result = R1.*R1;
+    r2_result = R2.*R2;
+
+    println("correct? :" , my_isapprox(r1_result,r2_result))
 
     #time it
 
-    #step 1: calculate standardized version of Y and G
-    @time Y_standard = (Y .- mean(Y)) / std(Y);
-    @time G_standard = (G .- mean(G)) / std(G);
-
     #step 2: calculate R, matrix of corelation coefficients 
-    @time R = Y_standard' * G_standard;
+    println("*** hello ***")
+    t1 = @belapsed r1 = calculate_r($Y_standard,$G_standard);;
+    println("====== time of cpu: ", t1);
+    t2 = @belapsed R2 = calculate_r($d_y, $d_g);
+    println("====== time of gpu: ", t2);
 
-    #step 3: calculate proportion of variance explained 
-    @time R.*R;
 
-    
-    # open("/Users/xiaoqihu/Documents/hg/fastlmm-gpu/test/genome-scan-cpu-[profiling-result.txt", "w") do 
+    #=
     #run all functions a second time for profiling. 
     #step 1: calculate standardized version of Y and G
     println("=======Get Standardized Y Matrix ======")
     # Profile.clear()
     @profile Y_standard = get_standardized_matrix(Y);
-    # open("/Users/xiaoqihu/Documents/hg/fastlmm-gpu/test/genome-scan-cpu-[profiling-result.txt", "a") do s 
-    #     Profile.print(IOContext(s, :displaysize => (24, 500)))
-    # end
+
     Profile.print()   
     
 
@@ -128,54 +150,10 @@ for i in matrix_size_range
     @profile R.*R; 
     Profile.print()
     
-
+    =#
 
 
 end
-
-
-
-#=
-    #run all functions once to prepare for profiling
-    #step 1: calculate standardized version of Y and G
-    Y_standard = (Y .- mean(Y)) / std(Y);
-    G_standard = (G .- mean(G)) / std(G);
-
-    #step 2: calculate R, matrix of corelation coefficients 
-    R = Y_standard' * G_standard;
-
-    #step 3: calculate proportion of variance explained 
-    R.*R;
-
-
-    #run all functions a second time for profiling. 
-    #step 1: calculate standardized version of Y and G
-
-  
-    println("=======Get Standardized Y Matrix ======")
-    @profile Y_standard = (Y .- mean(Y)) / std(Y);
-    Profile.print()
-    Profile.clear()
-
-    println("=======Get Standardized G Matrix ======")
-    @profile G_standard = (G .- mean(G)) / std(G);
-    Profile.print()
-    Profile.clear()
-
-    #step 2: calculate R, matrix of corelation coefficients 
-    println("=======Calculate R ======")
-    @profile R = Y_standard' * G_standard;
-    Profile.print()
-    Profile.clear()
-
-    #step 3: calculate proportion of variance explained 
-    println("=======Calculate proportion of variance explained ======")
-    @profile R.*R; 
-    Profile.print()
-    Profile.clear()
-
-=#
-
 
 
 

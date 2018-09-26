@@ -19,10 +19,14 @@
 """
 rotateData: Rotates data with respect to the kinship matrix
 
-y = phenotype matrix  
-X = predictor matrix  
+y = phenotype matrix
+X = predictor matrix
 K = kinship matrix, expected to be symmetric and positive definite
 """
+
+#hu: for benchmarking purpose:
+using BenchmarkTools, Compat
+
 
 function rotateData(y::AbstractArray{Float64,2},X::AbstractArray{Float64,2},
                     K::Array{Float64,2})
@@ -52,7 +56,7 @@ end
 
 
 ##################################################################
-# function to fit linear mixed model by optimizing heritability 
+# function to fit linear mixed model by optimizing heritability
 ##################################################################
 
 type Flmm
@@ -60,29 +64,29 @@ type Flmm
     sigma2::Float64
     h2::Float64
     ell::Float64
-end            
-        
-"""
-flmm: fit linear mixed model 
+end
 
-y: 2-d array of (rotated) phenotypes  
-X: 2-d array of (rotated) covariates  
-lambda: 1-d array of eigenvalues  
+"""
+flmm: fit linear mixed model
+
+y: 2-d array of (rotated) phenotypes
+X: 2-d array of (rotated) covariates
+lambda: 1-d array of eigenvalues
 reml: boolean indicating ML or REML estimation
 
 """
-        
+
 function flmm(y::Array{Float64,2},
              X::Array{Float64,2},
              lambda::Array{Float64,1},
              reml::Bool=false)
-    
+
     function logLik0(h2::Float64)
         - wls(y,X,1.0./(h2*lambda+(1.0-h2)),reml,true).ell
     end
 
     opt = optimize(logLik0,0.0,1.0,Brent())
-    h2 = Optim.minimizer(opt)
-    est = wls(y,X,1.0./(h2*lambda+(1.0-h2)),reml,true)
+    @btime h2 = Optim.minimizer(opt)
+    @btime est = wls(y,X,1.0./(h2*lambda+(1.0-h2)),reml,true)
     return Flmm(est.b,est.sigma2,h2,est.ell)
 end

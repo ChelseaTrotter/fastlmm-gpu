@@ -5,7 +5,8 @@
 
 import Base.inv
 using CuArrays
-using Base.LinAlg
+using LinearAlgebra
+
 
 
 include("benchmark.jl")
@@ -96,13 +97,18 @@ function solveleq( A::Array{Float64,2}, B::Array{Float64,2}, method="CH")
     a = copy(A)
     b = copy(B)
     if(method == "CH")
-        Base.LinAlg.LAPACK.potrf!('L', a)
-        Base.LinAlg.LAPACK.potrs!('L', a, b)
+        LinearAlgebra
+        .LAPACK.potrf!('L', a)
+        LinearAlgebra
+        .LAPACK.potrs!('L', a, b)
     elseif(method == "QR")
-        (a, tau) = Base.LinAlg.LAPACK.geqrf!(a)
-        Base.LinAlg.LAPACK.ormqr!('L', 'T', a, tau, b)
+        (a, tau) = LinearAlgebra
+        .LAPACK.geqrf!(a)
+        LinearAlgebra
+        .LAPACK.ormqr!('L', 'T', a, tau, b)
         alpha = Float64(1)
-        Base.LinAlg.BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
+        LinearAlgebra
+        .BLAS.trsm!('L', 'U', 'N', 'N', alpha, a, b)
     # else
     #     #default method LU
     #     #x = A\B
@@ -119,40 +125,41 @@ end
 # using CuArrays
 # CuArrays.CUSOLVER.potrf!('L',a)
 
+function run_ls()
+    file = open("benchmark_result.csv", "w")
+    for n in [1024,2048,4096,8192, 16384]
+        for p in [128, 265, 512, 1024, 2048]
+            if(n>p)
 
-file = open("benchmark_result.csv", "w")
-for n in [1024,2048,4096,8192, 16384]
-    for p in [128, 265, 512, 1024, 2048]
-        if(n>p)
+                println("n = $n, p = $p")
+                b = ones(p,1);
+                X = randn(n*2,p);
+                Y = X*b+ randn(n*2,1);
+                #W = repeat([4.0; 1.0],inner=n);
+                x = CuArray(X);
+                y = CuArray(Y);
+                #w = CuArray(W);
 
-            println("n = $n, p = $p")
-            b = ones(p,1);
-            X = randn(n*2,p);
-            Y = X*b+ randn(n*2,1);
-            #W = repeat([4.0; 1.0],inner=n);
-            x = CuArray(X);
-            y = CuArray(Y);
-            #w = CuArray(W);
+                tic(); cpu = ls(Y,X);toc()
+                tic(); gpu = ls(y,x);toc()
 
-            tic(); cpu = ls(Y,X);toc()
-            tic(); gpu = ls(y,x);toc()
+                #convert GPU array back to host and check result
+                h_b = convert(Array{Float64,2},gpu.b)
+                # println("CPU result: ", cpu.b)
+                # println("GPU result: ", h_b)
+                println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
 
-            #convert GPU array back to host and check result
-            h_b = convert(Array{Float64,2},gpu.b)
-            # println("CPU result: ", cpu.b)
-            # println("GPU result: ", h_b)
-            println("Compare result: ", isapprox(cpu.b,h_b; atol = 1e-10))
-
-            #run benchmark
-            cpu_result = benchmark(100, ls,Y,X)
-            gpu_result = benchmark(100, ls,y,x)
-            println(cpu_result)
-            println(gpu_result)
-            speedup = cpu_result[3]/gpu_result[3]
-            write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+                #run benchmark
+                cpu_result = benchmark(100, ls,Y,X)
+                gpu_result = benchmark(100, ls,y,x)
+                println(cpu_result)
+                println(gpu_result)
+                speedup = cpu_result[3]/gpu_result[3]
+                write(file, "$n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
 
 
+            end
         end
     end
+    close(file)
 end
-close(file)

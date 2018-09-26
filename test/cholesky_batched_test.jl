@@ -7,7 +7,8 @@ using CuArrays
 using Base.Test
 
 import Base.inv
-using Base.LinAlg
+using LinearAlgebra
+
 
 include("../src/benchmark.jl")
 
@@ -38,8 +39,10 @@ function run_cpu_cholesky(uplo::Char,
     b_copy = deepcopy(B)
 
     for i in 1:length(a_copy)
-        Base.LinAlg.LAPACK.potrf!(uplo, a_copy[i])
-        Base.LinAlg.LAPACK.potrs!(uplo, a_copy[i], b_copy[i])
+        LinearAlgebra
+        .LAPACK.potrf!(uplo, a_copy[i])
+        LinearAlgebra
+        .LAPACK.potrs!(uplo, a_copy[i], b_copy[i])
     end
     b_copy
 end
