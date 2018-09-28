@@ -6,19 +6,7 @@
 
 
 
-using Statistics
-using Profile 
-using CuArrays
-# using ProfileView 
-
-#using ProfileView # too many compilation error when installing package. giving up on this one. 
-
-using BenchmarkTools 
-# temporaryly giving up on BenchmarkTools package, because it requires me to make modification to the code.
-# eg:  Y_standard = (Y .- mean(Y)) / std(Y); 
-# will change to @btime Y_standard = ($Y .- mean($Y)) / std($Y);
-# This is because Y is a global variable, and you must add $ (interpolation) to avoid the error. 
-
+include("env.jl")
 
 #n: 100, 200, 400, 800, 1600, 3200, 6400, 12800, 
 #m:                                            25600, 
@@ -48,8 +36,6 @@ function check_correctness(a, b)
     end
 end
 
-
-
 function myrun(a, b)
 
     a_standard = get_standardized_matrix(a)
@@ -60,10 +46,11 @@ end
 
 
 
+
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800, 1600,=# 3200, 6400, 12800#=, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800, 1600,=# 3200#=, 6400, 12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 
 
