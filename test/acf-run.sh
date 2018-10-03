@@ -5,12 +5,6 @@
 module load cuda
 module load julia
 
-cd $PBS_O_WORKDIR
-echo "printing pwd"
-pwd
-echo "printing PBS_O_WORKDIR"
-echo $PBS_O_WORKDIR
-
 WORKDIR=/lustre/haven/user/xiaoqihu/hg/fastlmm-gpu/test/
 
 cd $WORKDIR
