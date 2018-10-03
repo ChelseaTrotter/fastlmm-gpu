@@ -1,6 +1,6 @@
 #PBS -S /bin/bash
 #PBS -A ACF-UTHSC0007 
-#PBS -l nodes=1,walltime=00:10:00 
+#PBS -l nodes=1,walltime=00:10:00,partition=skylake_volta 
 
 module load cuda
 module load julia
