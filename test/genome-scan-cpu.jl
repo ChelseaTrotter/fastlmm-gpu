@@ -17,12 +17,27 @@ function get_standardized_matrix(m)
 end
 
 function calculate_r(a::Array,b::Array)
-    return a' * b
+    return LinAlg.BLAS.gemm('T', 'N', a,b)
+    # return a' * b
 end
 
 function calculate_r(a::CuArray,b::CuArray)
     return collect(CuArrays.BLAS.gemm('T', 'N', a,b))
+
 end
+
+# function calculate_r_no_data_transfer(a::CuArray,b::CuArray)
+#     return CuArrays.BLAS.gemm('T', 'N', a,b)
+
+# end
+
+# function matrix_mult(a::CuArray, b::CuArray)
+
+# end
+
+# function matrix_mult(a::Array, b::Array)
+
+# end
 
 function my_isapprox(x,y)
     return isapprox(x,y, atol=1e-5)
@@ -50,7 +65,7 @@ end
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800, 1600, 3200, 6400,=# 12800, 25600, 51200#=, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800,=# 1600,3200, 6400,12800#=, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 
 
@@ -95,7 +110,7 @@ for i in matrix_size_range
     r1_result = R1.*R1;
     r2_result = R2.*R2;
 
-    println("correct? :" , my_isapprox(r1_result,r2_result))
+    # println("correct? :" , my_isapprox(r1_result,r2_result))
 
     #time it
 
