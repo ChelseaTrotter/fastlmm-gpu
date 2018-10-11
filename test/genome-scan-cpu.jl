@@ -23,7 +23,6 @@ end
 
 function calculate_r(a::CuArray,b::CuArray)
     return collect(CuArrays.BLAS.gemm('T', 'N', a,b))
-
 end
 
 # function calculate_r_no_data_transfer(a::CuArray,b::CuArray)
@@ -110,7 +109,7 @@ for i in matrix_size_range
     r1_result = R1.*R1;
     r2_result = R2.*R2;
 
-    # println("correct? :" , my_isapprox(r1_result,r2_result))
+    println("correct? :" , my_isapprox(r1_result,r2_result))
 
     #time it
 

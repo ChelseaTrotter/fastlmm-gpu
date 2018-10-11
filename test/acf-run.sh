@@ -9,5 +9,5 @@ WORKDIR=/lustre/haven/user/xiaoqihu/hg/fastlmm-gpu/test/
 
 cd $WORKDIR
 
-~/julia-0.7.0/bin/julia ./genome-scan-cpu.jl > genome-scan-output.txt
+/nics/d/home/xiaoqihu/julia-0.7.0/bin/julia ./genome-scan-cpu.jl > genome-scan-output.txt
 
