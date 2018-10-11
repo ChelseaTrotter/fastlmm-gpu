@@ -2,9 +2,9 @@ function benchmark(nrep::Int64, f::Function,x...; result::Bool=false)
 
     res = Array{Float64}(nrep)
     for i=1:nrep
-        tic()
+        start = time_ns()
         f(x...)
-        res[i] = toq()
+        res[i] = time_ns() - start
     end
     if(result)
         return (res)
@@ -18,9 +18,9 @@ function benchmarkWIthReturnValue(nrep::Int64, f::Function,x...; result::Bool=fa
     res = Array{Float64}(nrep)
     local returnvalue
     for i=1:nrep
-        tic()
+        start = time_ns()
         returnvalue = f(x...)
-        res[i] = toq()
+        res[i] = time_ns() - start
     end
     if(result)
         return (returnvalue,res)

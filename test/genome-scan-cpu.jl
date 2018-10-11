@@ -65,7 +65,7 @@ end
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800,=# 1600,3200, 6400,12800#=, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800,=# 1600,3200#=, 6400,12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 
 
@@ -116,9 +116,13 @@ for i in matrix_size_range
 
     #step 2: calculate R, matrix of corelation coefficients 
     println("*** hello ***")
-    t1 = @belapsed r1 = calculate_r($Y_standard,$G_standard);;
+    start = time_ns();
+    r1 = calculate_r(Y_standard,G_standard);
+    t1 = time_ns() - start;
     println("====== time of cpu: ", t1);
-    t2 = @belapsed R2 = calculate_r($d_y, $d_g);
+    start2 = time_ns();
+    R2 = calculate_r(d_y, d_g);
+    t2 = time_ns() - start2;
     println("====== time of gpu: ", t2);
 
 

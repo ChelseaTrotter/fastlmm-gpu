@@ -26,7 +26,7 @@ end
 check_pkg_installation("env.jl")
 
 using Statistics
-using Profile
+# using Profile
 using CuArrays
 # using ProfileView
 using BenchmarkTools
