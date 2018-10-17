@@ -68,10 +68,10 @@ m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
 matrix_size_range = [#=100, 200, 400, 800,1600,=#3200#=,  6400,12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
-dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH:MM:SS")
+dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
 host = gethostname()
 
-file = open("./timing/genome-scan-timing***$host***$dt_now.csv", "w")
+file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "w")
 
 for i in matrix_size_range
     n = i 
@@ -85,7 +85,7 @@ for i in matrix_size_range
         m = m_max
     end
 
-    file = open("./timing/genome-scan-timing***$host***$dt_now.csv", "a")
+    file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "a")
 
     println("*************************** n: $n,m: $m, r: $r******************************")
     
@@ -94,8 +94,8 @@ for i in matrix_size_range
     Y = rand(m, n)
     G = rand(m, n)
 
-    cpu_result = benchmark(20, cpurun, Y, G)
-    gpu_result = benchmark(20, gpurun, Y, G)
+    cpu_result = benchmark(1, cpurun, Y, G)
+    gpu_result = benchmark(1, gpurun, Y, G)
     speedup = cpu_result[3]/gpu_result[3]
 
     write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
