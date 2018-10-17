@@ -7,6 +7,7 @@
 
 
 include("env.jl")
+include("../src/benchmark.jl")
 
 #n: 100, 200, 400, 800, 1600, 3200, 6400, 12800, 
 #m:                                            25600, 
@@ -22,24 +23,12 @@ function calculate_r(a::Array,b::Array)
 end
 
 function calculate_r(a::CuArray,b::CuArray)
-    return collect(CuArrays.BLAS.gemm('T', 'N', a,b))
+    return CuArrays.BLAS.gemm('T', 'N', a,b)
 end
 
-# function calculate_r_no_data_transfer(a::CuArray,b::CuArray)
-#     return CuArrays.BLAS.gemm('T', 'N', a,b)
-
-# end
-
-# function matrix_mult(a::CuArray, b::CuArray)
-
-# end
-
-# function matrix_mult(a::Array, b::Array)
-
-# end
 
 function my_isapprox(x,y)
-    return isapprox(x,y, atol=1e-5)
+    return isapprox(x,y, atol=1e-7)
 end
 
 function check_correctness(a, b)
@@ -50,11 +39,24 @@ function check_correctness(a, b)
     end
 end
 
-function myrun(a, b)
+function cpurun(a::Array, b::Array)
+    #step 1: calculate standardized version of Y and G
+    a_standard = get_standardized_matrix(a)
+    b_standard = get_standardized_matrix(b)
+    #step 2: calculate R, matrix of corelation coefficients
+    r = calculate_r(a,b)
+    #step 3: calculate proportion of variance explained 
+    return r.*r
+end
+
+function gpurun(a::Array, b::Array)
 
     a_standard = get_standardized_matrix(a)
     b_standard = get_standardized_matrix(b)
-    r = calculate_r(a,b)
+
+    d_a = CuArray(a_standard);
+    d_b = CuArray(b_standard);
+    r = collect(calculate_r(d_a,d_b));
     return r.*r
 end
 
@@ -64,16 +66,18 @@ end
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800,=# 1600,3200#=, 6400,12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800,1600,=#3200#=,  6400,12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
+dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH:MM:SS")
+host = gethostname()
 
-
+file = open("./timing/genome-scan-timing***$host***$dt_now.csv", "w")
 
 for i in matrix_size_range
     n = i 
     m = i
     r = i
- 
+    
     if(n > n_max)
         n = n_max
     end
@@ -81,85 +85,25 @@ for i in matrix_size_range
         m = m_max
     end
 
-    println("*************************** $n, $m, $r******************************")
+    file = open("./timing/genome-scan-timing***$host***$dt_now.csv", "a")
+
+    println("*************************** n: $n,m: $m, r: $r******************************")
     
-    Y = rand(n, m)
-    G = rand(n, r)
+    srand(123);
 
-    # run(Y,G)
-    # Profile.clear()
-    # @profile run(Y,G)
-    # ProfileView.view()
+    Y = rand(m, n)
+    G = rand(m, n)
 
-    # println("Y\n", Y)
-    # println("G\n", G)
+    cpu_result = benchmark(20, cpurun, Y, G)
+    gpu_result = benchmark(20, gpurun, Y, G)
+    speedup = cpu_result[3]/gpu_result[3]
 
-    #step 1: calculate standardized version of Y and G
-    Y_standard = get_standardized_matrix(Y);
-    G_standard = get_standardized_matrix(G);
-
-    d_y = CuArray(Y_standard);
-    d_g = CuArray(G_standard);
-
-    #step 2: calculate R, matrix of corelation coefficients 
-    R1 = calculate_r(Y_standard, G_standard);
-    R2 = calculate_r(d_y, d_g);
-
-    #step 3: calculate proportion of variance explained 
-    r1_result = R1.*R1;
-    r2_result = R2.*R2;
-
-    println("correct? :" , my_isapprox(r1_result,r2_result))
-
-    #time it
-
-    #step 2: calculate R, matrix of corelation coefficients 
-    println("*** hello ***")
-    start = time_ns();
-    r1 = calculate_r(Y_standard,G_standard);
-    t1 = time_ns() - start;
-    println("====== time of cpu: ", t1);
-    start2 = time_ns();
-    R2 = calculate_r(d_y, d_g);
-    t2 = time_ns() - start2;
-    println("====== time of gpu: ", t2);
-
-
-    #=
-    #run all functions a second time for profiling. 
-    #step 1: calculate standardized version of Y and G
-    println("=======Get Standardized Y Matrix ======")
-    # Profile.clear()
-    @profile Y_standard = get_standardized_matrix(Y);
-
-    Profile.print()   
-    
-
-    println("=======Get Standardized G Matrix ======")
-    Profile.clear()
-    @profile G_standard = get_standardized_matrix(G);
-    Profile.print()
-    
- 
-    #step 2: calculate R, matrix of corelation coefficients 
-    println("=======Calculate R ======")
-    Profile.clear()
-    @profile R = calculate_r(Y_standard, G_standard);
-    Profile.print(C = true)
-    
- 
-    #step 3: calculate proportion of variance explained 
-    println("=======Calculate proportion of variance explained ======")
-    R.*R;
-    Profile.clear()
-    @profile R.*R; 
-    Profile.print()
-    
-    =#
-
+    write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+    close(file)
 
 end
 
+close(file)
 
 
 

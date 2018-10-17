@@ -46,8 +46,8 @@ for m in [4096]
             tic(); c = CuArrays.BLAS.gemm('T', 'N', a, b); toc();
 
             #convert GPU array back to host and check result
-            h_c = convert(Array{Float64,2},c)
-            println("Compare result: ", isapprox(C,h_c; atol = 1e-5))
+            # h_c = convert(Array{Float64,2},c)
+            # println("Compare result: ", isapprox(C,h_c; atol = 1e-5))
 
             #run benchmark
             # cpu_result = @btime LinAlg.BLAS.gemm('T','N', $A,$B)
