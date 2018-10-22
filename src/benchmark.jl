@@ -5,7 +5,7 @@ function benchmark(nrep::Int64, f::Function,x...; result::Bool=false)
     for i=1:nrep
         start = time_ns();
         f(x...)
-        res[i] = (time_ns() - start) / 1e+9
+        res[i] = Int((time_ns() - start)) / 1e+9
     end
     if(result)
         return (res)
