@@ -41,8 +41,8 @@ end
 
 function cpurun(a::Array, b::Array)
     #step 1: calculate standardized version of Y and G
-    a_standard = get_standardized_matrix(a)
-    b_standard = get_standardized_matrix(b)
+    #a_standard = get_standardized_matrix(a)
+    #b_standard = get_standardized_matrix(b)
     #step 2: calculate R, matrix of corelation coefficients
     r = calculate_r(a,b)
     #step 3: calculate proportion of variance explained 
@@ -51,11 +51,11 @@ end
 
 function gpurun(a::Array, b::Array)
 
-    a_standard = get_standardized_matrix(a)
-    b_standard = get_standardized_matrix(b)
+    #a_standard = get_standardized_matrix(a)
+    #b_standard = get_standardized_matrix(b)
 
-    d_a = CuArray(a_standard);
-    d_b = CuArray(b_standard);
+    d_a = CuArray(a);
+    d_b = CuArray(b);
     r = collect(calculate_r(d_a,d_b));
     return r.*r
 end
@@ -66,7 +66,7 @@ end
 n_max = 12800
 m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800,1600,3200, =#  6400#=,12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [#=100, 200, 400, 800,1600,3200, 6400,12800,=# 25600#=, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
 dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
 host = gethostname()
@@ -94,8 +94,11 @@ for i in matrix_size_range
     Y = rand(m, n)
     G = rand(m, n)
 
-    cpu_result = benchmark(20, cpurun, Y, G)
-    gpu_result = benchmark(20, gpurun, Y, G)
+    a_std = get_standardized_matrix(Y);
+    b_std = get_standardized_matrix(G);
+
+    cpu_result = benchmark(10, cpurun, a_std, b_std)
+    gpu_result = benchmark(10, gpurun, a_std, b_std)
     speedup = cpu_result[3]/gpu_result[3]
 
     write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
