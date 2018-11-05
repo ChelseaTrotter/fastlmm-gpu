@@ -3,21 +3,30 @@ using Base
 using BenchmarkTools
 
 include("../src/benchmark.jl")
-function matrix_mult(a::Array{Float64, 2}, b::Array{Float64, 2})
-    res = a'*b
-    return res
-end
-function matrix_mult(a::CuArray{Float64, 2}, b::CuArray{Float64, 2})
-    res = a'*b
-    return res
+
+alf = 1.0
+bet = 0.0
+# gemm!(tA, tB, alpha, A, B, beta, C)
+
+function cpu_run(a::Array, b::Array, c::Array)
+    return LinAlg.BLAS.gemm!('N','N',alf, a,b, bet, c)
 end
 
+# CuArrays.CUBLAS.gemm!('N','N',alpha,d_A,d_B,beta,d_C1)
+
+function gpu_run(a::Array, b::Array, c::Array)
+    A = CuArray(a)
+    B = CuArray(b)
+    C = CuArray(c)
+    CuArrays.BLAS.gemm!('N', 'N', alf, A,B, bet, C)
+    return collect(C)
+end
 
 file = open("gemm_benchmark_result.csv", "w")
 # for m in [1024, 2048, 4096, 8192, 16384]
     # for n in [128, 256, 512, 1024, 2048]
-for m in [4096]
-    for n in [4096]
+for m in [5120]
+    for n in [5120]
         if(m>=n)
             file = open("gemm_benchmark_result.csv", "a")
             println("m = $m, n = $n")
@@ -26,24 +35,16 @@ for m in [4096]
 
             A = randn(m,n);
             B = randn(m,n);
-            a = CuArray(A);
-            b = CuArray(B);
+            C = similar(A);
+            # a = CuArray(A);
+            # b = CuArray(B);
             #println("A : ", A)
             #println("B : ", B)
 
-            C = A'*B; 
-            c = a'*b; 
-
-            C = LinAlg.BLAS.gemm('T', 'N', A, B);
-            c = CuArrays.BLAS.gemm('T', 'N', a, b);
-
-            println("A'*B: ")
-            tic(); C = A'*B; toc();
-            tic(); c = a'*b; toc();
-
-            println("LinAlg:")
-            tic(); C = LinAlg.BLAS.gemm('T', 'N', A, B); toc();
-            tic(); c = CuArrays.BLAS.gemm('T', 'N', a, b); toc();
+            println("CPU runtime:")
+            tic(); cpu_run(A,B,C);toc();
+            println("GPU runtime:")
+            tic(); gpu_run(A,B,C);toc();
 
             #convert GPU array back to host and check result
             # h_c = convert(Array{Float64,2},c)
@@ -56,11 +57,15 @@ for m in [4096]
             # write(file, "$m, $n, $(cpu_result),  $(gpu_result), $speedup\n");
             # close(file)
 
-            cpu_result = benchmark(20, LinAlg.BLAS.gemm,'T','N', A,B)
-            gpu_result = benchmark(20, CuArrays.BLAS.gemm,'T','N', a,b)
+            cpu_result = benchmark(10, cpu_run, A,B,C)
+            gpu_result = benchmark(10, gpu_run,A,B,C)
             speedup = cpu_result[3]/gpu_result[3]
             println(cpu_result)
             println(gpu_result)
+            write(file, "testing gemm in julia. 
+                    Matrix size: 5120 double precision. 
+                    Comparing to C result: GPU 0.511 seconds , CPU (using cblas_dgemm)16.19 seconds.
+                    Does not include data transfer time\n")
             write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
             close(file)
         end
