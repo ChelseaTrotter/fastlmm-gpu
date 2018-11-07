@@ -22,17 +22,24 @@ function gpu_run(a::Array, b::Array, c::Array)
     return collect(C)
 end
 
-file = open("gemm_benchmark_result.csv", "w")
+dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
+host = gethostname()
+
+file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "w")
 # for m in [1024, 2048, 4096, 8192, 16384]
     # for n in [128, 256, 512, 1024, 2048]
 for m in [5120]
     for n in [5120]
         if(m>=n)
-            file = open("gemm_benchmark_result.csv", "a")
+            file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "a")
             println("m = $m, n = $n")
 
             srand(123);
 
+            #generating double precision matrix
+            # A = randn(m,n);
+            # B = randn(m,n);
+            #if generating single precision matrix
             A = randn(m,n);
             B = randn(m,n);
             C = similar(A);
@@ -62,10 +69,8 @@ for m in [5120]
             speedup = cpu_result[3]/gpu_result[3]
             println(cpu_result)
             println(gpu_result)
-            write(file, "testing gemm in julia. 
-                    Matrix size: 5120 double precision. 
-                    Comparing to C result: GPU 0.511 seconds , CPU (using cblas_dgemm)16.19 seconds.
-                    Does not include data transfer time\n")
+            write(file, "testing double precision gemm in julia. Does include data transfer time
+            m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
             write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
             close(file)
         end

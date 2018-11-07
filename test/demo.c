@@ -11,9 +11,11 @@
 // export PATH=$PATH:/usr/local/cuda/bin
 // nvcc cudaExample.C -I/usr/local/cuda/include -lcublas -o cudaExample
 
-matrixMulCPU(double *C, double *A, double *B, unsigned int hA, unsigned int wA, unsigned int wB)
+#define MAX 5120
+
+matrixMulCPU(float *C, float *A, float *B, unsigned int hA, unsigned int wA, unsigned int wB)
 {
-    cblas_dgemm (CblasRowMajor, 
+    cblas_sgemm (CblasRowMajor, 
                CblasNoTrans, CblasNoTrans, hA, wA,wB,
                1.0, B, hA, A, wB, 0.0, C, hA);
 }
@@ -24,12 +26,46 @@ double read_timer() {
   return end.tv_sec+1.e-6*end.tv_usec;
 }
 
-void fillMatrix( double *p, int n ) {
+void fillMatrix( float *p, int n ) {
   int i;
   srand48(0);
   for( i = 0; i < n; i++ )
     p[i] = 2*drand48()-1;
 }
+
+void printDiff(float *data1, float *data2, int width, int height, int iListLength, float fListTol)
+{
+    printf("Listing first %d Differences > %.6f...\n", iListLength, fListTol);
+    int i,j,k;
+    int error_count=0;
+
+    for (j = 0; j < height; j++)
+    {
+        if (error_count < iListLength)
+        {
+            // printf("\n  Row %d:\n", j);
+        }
+
+        for (i = 0; i < width; i++)
+        {
+            k = j * width + i;
+            float fDiff = fabs(data1[k] - data2[k]);
+
+            if (fDiff > fListTol)
+            {
+                if (error_count < iListLength)
+                {
+                    printf("    Loc(%d,%d)\tCPU=%.5f\tGPU=%.5f\tDiff=%.6f\n", i, j, data1[k], data2[k], fDiff);
+                }
+
+                error_count++;
+            }
+        }
+    }
+
+    printf(" \n  Total Errors = %d\n", error_count);
+}
+
 
 int main( int argc, char **argv ) {
   printf("Starting\n");
@@ -41,26 +77,32 @@ int main( int argc, char **argv ) {
 
   cublasOperation_t N = 'N';
   cublasOperation_t T = 'T';
-  double one = 1., zero=0.;
+  float one = 1., zero=0.;
 
-  for( size = 5120; size <= 5120; size*=2 ) {
+  for( size = MAX; size <= MAX; size*=2 ) {
 
     // allocate memory on host (CPU)
-    double *A = (double*) malloc( sizeof(double)*size*size );
-    double *B = (double*) malloc( sizeof(double)*size*size );
-    double *C = (double*) malloc( sizeof(double)*size*size );
+    float *A = (float*) malloc( sizeof(float)*size*size );
+    float *B = (float*) malloc( sizeof(float)*size*size );
+    float *C = (float*) malloc( sizeof(float)*size*size );
 
     cudaDeviceSynchronize();
     double tInit = read_timer();
 
-    double *dA,*dB;
+    float *dA,*dB,*dC;
     // allocate memory on device (GPU)
-    cudaStat = cudaMalloc((void**)&dA, sizeof(double)*size*size);
+    cudaStat = cudaMalloc((void**)&dA, sizeof(float)*size*size);
     if(cudaStat != cudaSuccess) {
       printf ("device memory allocation failed");
       return EXIT_FAILURE;
     }
-    cudaStat = cudaMalloc((void**)&dB, sizeof(double)*size*size);
+    cudaStat = cudaMalloc((void**)&dB, sizeof(float)*size*size);
+    if(cudaStat != cudaSuccess) {
+      printf ("device memory allocation failed");
+      return EXIT_FAILURE;
+    }
+
+    cudaStat = cudaMalloc((void**)&dC, sizeof(float)*size*size);
     if(cudaStat != cudaSuccess) {
       printf ("device memory allocation failed");
       return EXIT_FAILURE;
@@ -81,6 +123,7 @@ int main( int argc, char **argv ) {
     }
 
     // create our test matrix on the CPU
+    fillMatrix(A, size*size);
     fillMatrix(B, size*size);
 
     cudaDeviceSynchronize();
@@ -88,7 +131,10 @@ int main( int argc, char **argv ) {
 
 
     // copy matrix to GPU, with dB the pointer to the object on the GPU
-    stat = cublasSetMatrix (size, size, sizeof(double), B, size, dB, size);
+    stat = cublasSetMatrix (size, size, sizeof(float), A, size, dA, size);
+    stat = cublasSetMatrix (size, size, sizeof(float), B, size, dB, size);
+    stat = cublasSetMatrix (size, size, sizeof(float), C, size, dC, size);
+
     if(stat != CUBLAS_STATUS_SUCCESS) {
       printf ("data download failed");
       cudaFree (dB);
@@ -100,16 +146,16 @@ int main( int argc, char **argv ) {
     double tTransferToGPU = read_timer();
  
     // call cublas matrix multiply (dA = dB * dB)
-    cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, size, size, size, &one, dB, size, dB, size, &zero, dA, size );
+    cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, size, size, size, &one, dA, size, dB, size, &zero, dC, size );
 
     cudaDeviceSynchronize();
     double tMatMult = read_timer();
 
     // transfer matrix back to CPU
-    stat = cublasGetMatrix (size, size, sizeof(double), dA, size, A, size);
+    stat = cublasGetMatrix (size, size, sizeof(float), dC, size, C, size);
     if(stat != CUBLAS_STATUS_SUCCESS) {
       printf ("data upload failed");
-      cudaFree(dA);
+      cudaFree(dC);
       cublasDestroy(handle);
       return EXIT_FAILURE;
     }
@@ -123,20 +169,25 @@ int main( int argc, char **argv ) {
     printf("Transfer to GPU time: %f\n", tTransferToGPU - tInit2);
     printf("Matrix multiply time: %f\n", tMatMult - tTransferToGPU);
     printf("Transfer from GPU time: %f\n", tTransferFromGPU - tMatMult);
-    printf("GPU total time: %f\n", tTransferFromGPU-tInit);
+    printf("GPU total time: %f\n", tTransferFromGPU - tInit2);
 
     double c_start= read_timer();
-    matrixMulCPU(C, A,B, size,size,size);
+    float *h_C = (float*) malloc( sizeof(float)*size*size );
+
+    matrixMulCPU(h_C, A,B, size,size,size);
     double c_end = read_timer();
     printf("CPU calc time: %f\n", c_end - c_start);
 
+    printDiff(h_C,C, size, size, 100, 1.0e-3);
     // free memory on GPU and CPU
     cudaFree(dA);
     cudaFree(dB);
+    cudaFree(dC);
     cublasDestroy(handle);
     free(A);
     free(B);
- 
+    free(C);
+
   }
   return EXIT_SUCCESS;
 }
