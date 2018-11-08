@@ -22,47 +22,51 @@ function gpu_run(a::Array, b::Array, c::Array)
     return collect(C)
 end
 
+function get_num_doubles()
+    gb =  1073741824
+    gpu_mem_size = 2
+    size_of_double_float = 8 #a double floating point number takes 8 bytes to store
+
+    if gethostname() == "cuda-linux"
+        gpu_mem_size = 2 
+    else 
+        gpu_mem_size = 16 
+    end
+    println("Total GPU memory size: $gpu_mem_size GB. \n")
+    return (gpu_mem_size*gb)/size_of_double_float
+end
+
+
 dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
 host = gethostname()
 
 file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "w")
-# for m in [1024, 2048, 4096, 8192, 16384]
-    # for n in [128, 256, 512, 1024, 2048]
-for m in [5120]
-    for n in [5120]
-        if(m>=n)
-            file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "a")
-            println("m = $m, n = $n")
 
+msizes = [1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576]; # range from 1k to 1m in log scale
+nsizes = msizes;
+psizes = [16, 32, 64, 128, 512, 1024, 2048, 4096, 8192, 16384, 32768]; # ranges from 10 to 4k in log scale. 
+
+for m in msizes
+    for n in nsizes
+        for p in psizes
+            file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "a")
+            if ((m*p + n*p + m*n)>get_num_doubles())
+                println("Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
+                write(file, "Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
+                break;
+            end
+            println("m = $m, n = $n, p: $p\n")
             srand(123);
 
             #generating double precision matrix
-            # A = randn(m,n);
-            # B = randn(m,n);
-            #if generating single precision matrix
             A = randn(m,n);
-            B = randn(m,n);
-            C = similar(A);
-            # a = CuArray(A);
-            # b = CuArray(B);
-            #println("A : ", A)
-            #println("B : ", B)
+            B = randn(n,p);
+            C = zeros(m,p);
 
             println("CPU runtime:")
             tic(); cpu_run(A,B,C);toc();
             println("GPU runtime:")
             tic(); gpu_run(A,B,C);toc();
-
-            #convert GPU array back to host and check result
-            # h_c = convert(Array{Float64,2},c)
-            # println("Compare result: ", isapprox(C,h_c; atol = 1e-5))
-
-            #run benchmark
-            # cpu_result = @btime LinAlg.BLAS.gemm('T','N', $A,$B)
-            # gpu_result = @btime CuArrays.BLAS.gemm('T','N', $a,$b)
-            # speedup = cpu_result/gpu_result
-            # write(file, "$m, $n, $(cpu_result),  $(gpu_result), $speedup\n");
-            # close(file)
 
             cpu_result = benchmark(10, cpu_run, A,B,C)
             gpu_result = benchmark(10, gpu_run,A,B,C)
@@ -71,9 +75,9 @@ for m in [5120]
             println(gpu_result)
             write(file, "testing double precision gemm in julia. Does include data transfer time
             m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
-            write(file, "$m, $n, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+            write(file, "$m, $n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
             close(file)
-        end
+        end 
     end
 end
 close(file)
