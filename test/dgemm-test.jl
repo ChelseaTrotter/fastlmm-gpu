@@ -4,8 +4,10 @@ using BenchmarkTools
 
 include("../src/benchmark.jl")
 
-alf = 1.0
-bet = 0.0
+const alf = 1.0
+const bet = 0.0
+const gb =  1073741824
+
 # gemm!(tA, tB, alpha, A, B, beta, C)
 
 function cpu_run(a::Array, b::Array, c::Array)
@@ -23,14 +25,13 @@ function gpu_run(a::Array, b::Array, c::Array)
 end
 
 function get_num_doubles()
-    gb =  1073741824
     gpu_mem_size = 2
     size_of_double_float = 8 #a double floating point number takes 8 bytes to store
 
     if gethostname() == "cuda-linux"
-        gpu_mem_size = 2 
+        gpu_mem_size = 2 - 0.5
     else 
-        gpu_mem_size = 16 
+        gpu_mem_size = 16 - 1
     end
     println("Total GPU memory size: $gpu_mem_size GB. \n")
     return (gpu_mem_size*gb)/size_of_double_float
@@ -50,10 +51,12 @@ for m in msizes
     for n in nsizes
         for p in psizes
             file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "a")
+            total_doubles = (m*p + n*p + m*n)
             if ((m*p + n*p + m*n)>get_num_doubles())
+            # if (1>0)
                 println("Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
-                write(file, "Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
-                break;
+                write(file, "Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p\n");
+                continue;
             end
             println("m = $m, n = $n, p: $p\n")
             srand(123);
@@ -73,9 +76,10 @@ for m in msizes
             speedup = cpu_result[3]/gpu_result[3]
             println(cpu_result)
             println(gpu_result)
-            write(file, "testing double precision gemm in julia. Does include data transfer time
-            m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
-            write(file, "$m, $n, $p, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+            # write(file, "testing double precision gemm in julia. Does include data transfer time
+            # m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
+            mem_req_gb = (total_doubles * 8 ) / gb
+            write(file, "$m, $n, $p, $mem_req_gb, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
             close(file)
         end 
     end
