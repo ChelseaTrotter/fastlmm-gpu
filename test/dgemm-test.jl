@@ -56,31 +56,32 @@ for m in msizes
             # if (1>0)
                 println("Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
                 write(file, "Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p\n");
-                continue;
+                close(file);
+            else
+                println("m = $m, n = $n, p: $p\n")
+                srand(123);
+
+                #generating double precision matrix
+                A = randn(m,n);
+                B = randn(n,p);
+                C = zeros(m,p);
+
+                println("CPU runtime:")
+                tic(); cpu_run(A,B,C);toc();
+                println("GPU runtime:")
+                tic(); gpu_run(A,B,C);toc();
+
+                cpu_result = benchmark(10, cpu_run, A,B,C)
+                gpu_result = benchmark(10, gpu_run,A,B,C)
+                speedup = cpu_result[3]/gpu_result[3]
+                println(cpu_result)
+                println(gpu_result)
+                # write(file, "testing double precision gemm in julia. Does include data transfer time
+                # m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
+                mem_req_gb = (total_doubles * 8 ) / gb
+                write(file, "$m, $n, $p, $mem_req_gb, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+                close(file)
             end
-            println("m = $m, n = $n, p: $p\n")
-            srand(123);
-
-            #generating double precision matrix
-            A = randn(m,n);
-            B = randn(n,p);
-            C = zeros(m,p);
-
-            println("CPU runtime:")
-            tic(); cpu_run(A,B,C);toc();
-            println("GPU runtime:")
-            tic(); gpu_run(A,B,C);toc();
-
-            cpu_result = benchmark(10, cpu_run, A,B,C)
-            gpu_result = benchmark(10, gpu_run,A,B,C)
-            speedup = cpu_result[3]/gpu_result[3]
-            println(cpu_result)
-            println(gpu_result)
-            # write(file, "testing double precision gemm in julia. Does include data transfer time
-            # m, n, (cpu_result[3]),  (gpu_result[3]), speedup\n")
-            mem_req_gb = (total_doubles * 8 ) / gb
-            write(file, "$m, $n, $p, $mem_req_gb, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
-            close(file)
         end 
     end
 end
