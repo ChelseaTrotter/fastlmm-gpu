@@ -5,7 +5,8 @@
 #include <math.h>
 #include <cuda_runtime.h>
 #include "cublas_v2.h"
-#include <gsl/gsl_blas.h>
+#include <cblas.h>
+//#include <gsl/gsl_blas.h>
 
 // compile as:
 // export PATH=$PATH:/usr/local/cuda/bin
