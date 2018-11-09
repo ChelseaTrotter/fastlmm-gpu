@@ -39,7 +39,7 @@ dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
 host = gethostname()
 file = open("./gemm-timing/sgemm-result@$host@$dt_now.csv", "w")
 
-msizes = [#=1024, 2048, =#4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576]; # range from 1k to 1m in log scale
+msizes = [1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576]; # range from 1k to 1m in log scale
 nsizes = msizes;
 psizes = [16, 32, 64, 128, 512, 1024, 2048, 4096, 8192, 16384, 32768]; # ranges from 10 to 4k in log scale. 
 

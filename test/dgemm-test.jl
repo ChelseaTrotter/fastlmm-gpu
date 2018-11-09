@@ -29,9 +29,9 @@ function get_num_doubles()
     size_of_double_float = 8 #a double floating point number takes 8 bytes to store
 
     if gethostname() == "cuda-linux"
-        gpu_mem_size = 2 - 0.5
+        gpu_mem_size = 2 - 0.3
     else 
-        gpu_mem_size = 16 - 1
+        gpu_mem_size = 16 - 0.5
     end
     println("Total GPU memory size: $gpu_mem_size GB. \n")
     return (gpu_mem_size*gb)/size_of_double_float
