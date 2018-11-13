@@ -1,0 +1,1065 @@
+1024, 1024, 16, 0.001723353,  0.0013402335, 1.285860262409498
+1024, 1024, 32, 0.002501596,  0.001336446, 1.8718272193564125
+1024, 1024, 64, 0.0040984775,  0.001465563, 2.79652085921929
+1024, 1024, 128, 0.007316598,  0.001830268, 3.997555549241969
+1024, 1024, 512, 0.0274176165,  0.003575257, 7.6687120674122164
+1024, 1024, 1024, 0.053279813999999995,  0.0055950845, 9.522611141976496
+1024, 1024, 2048, 0.104384215,  0.0101992595, 10.234489572502788
+1024, 1024, 4096, 0.205373091,  0.01990735, 10.316445483703255
+1024, 1024, 8192, 0.40916916400000003,  0.0419044325, 9.764340896395627
+1024, 1024, 16384, 0.8152993985,  0.07873446449999999, 10.355051039941982
+1024, 1024, 32768, 1.630707456,  0.202300468, 8.060818999192824
+1024, 2048, 16, 0.0038525965,  0.0025433975, 1.5147441561926518
+1024, 2048, 32, 0.006085096,  0.0024843254999999996, 2.4493956206624294
+1024, 2048, 64, 0.008670443,  0.0027198125, 3.1878826205850586
+1024, 2048, 128, 0.014566492,  0.0031406845, 4.637999136812374
+1024, 2048, 512, 0.055359593,  0.005680717, 9.745177061275891
+1024, 2048, 1024, 0.1058687575,  0.008655835, 12.23091215347797
+1024, 2048, 2048, 0.2075823295,  0.0146238855, 14.194745267938538
+1024, 2048, 4096, 0.407676382,  0.028817583, 14.146793018692788
+1024, 2048, 8192, 0.8129139985,  0.0590602115, 13.764156576039353
+1024, 2048, 16384, 1.6238767455,  0.11554532749999999, 14.054023478361772
+1024, 2048, 32768, 3.247085964,  0.229906758, 14.123490724009079
+1024, 4096, 16, 0.0080054215,  0.004948836, 1.6176372585391798
+1024, 4096, 32, 0.010871558,  0.0054544555, 1.9931518370623795
+1024, 4096, 64, 0.01684551,  0.005609035, 3.0032813130957465
+1024, 4096, 128, 0.029316679,  0.005881303, 4.984725153592664
+1024, 4096, 512, 0.11138037149999999,  0.0099689815, 11.172693168304104
+1024, 4096, 1024, 0.211773147,  0.015203364, 13.929361094031558
+1024, 4096, 2048, 0.414649854,  0.02779009, 14.920781256915685
+1024, 4096, 4096, 0.8200708755,  0.0503150265, 16.29872689225355
+1024, 4096, 8192, 1.621901948,  0.098890007, 16.401070211270184
+1024, 4096, 16384, 3.2391338615,  0.19778314549999998, 16.37719864001253
+1024, 4096, 32768, 6.477669496000001,  0.527698607, 12.275320438736728
+1024, 8192, 16, 0.015337113999999999,  0.011735819500000001, 1.3068634874624645
+1024, 8192, 32, 0.020936265500000002,  0.0124969905, 1.6753045863322056
+1024, 8192, 64, 0.033426257,  0.0122438025, 2.7300552258989805
+1024, 8192, 128, 0.059169544000000004,  0.0140932145, 4.198442023287165
+1024, 8192, 512, 0.22015551249999998,  0.022354721, 9.848278245118781
+1024, 8192, 1024, 0.4185738075,  0.0332599735, 12.584911034279688
+1024, 8192, 2048, 0.8233283625000001,  0.050820445500000005, 16.200730914489917
+1024, 8192, 4096, 1.6344421695,  0.09556195249999999, 17.103482366583084
+1024, 8192, 8192, 3.24667537,  0.24387623149999998, 13.312799488620934
+1024, 8192, 16384, 6.472705175,  0.529741901, 12.21860147891152
+1024, 8192, 32768, 12.9569575715,  1.0397930155, 12.461093100600849
+1024, 16384, 16, 0.029705787499999997,  0.0241928605, 1.2278741284024681
+1024, 16384, 32, 0.041968646,  0.0247510065, 1.6956339129077438
+1024, 16384, 64, 0.0670776265,  0.0256956235, 2.610468918958125
+1024, 16384, 128, 0.11917241049999999,  0.029233534999999998, 4.076565167366861
+1024, 16384, 512, 0.42484363849999995,  0.0437103605, 9.719518064830417
+1024, 16384, 1024, 0.8403087555,  0.065618409, 12.805991006273864
+1024, 16384, 2048, 1.6489289710000001,  0.10724243650000001, 15.375713428517637
+1024, 16384, 4096, 3.265158015,  0.20130488800000002, 16.21996389377291
+1024, 16384, 8192, 6.499669922000001,  0.4542928305, 14.307225396549596
+1024, 16384, 16384, 12.976136621,  0.974544794, 13.315074587530965
+1024, 32768, 16, 0.058937935999999996,  0.049593791, 1.1884136060499992
+M is 1024, N is 16384, P is 32768
+1024, 32768, 32, 0.08396050199999999,  0.048631995, 1.7264457688811654
+1024, 32768, 64, 0.135692913,  0.052589738, 2.5802165624023456
+1024, 32768, 128, 0.2339048195,  0.056051398, 4.173041669718924
+1024, 32768, 512, 0.8409500915,  0.08938586800000001, 9.408087769534216
+1024, 32768, 1024, 1.703638834,  0.12366169399999999, 13.776609222254388
+1024, 32768, 2048, 3.2898250425,  0.210016394, 15.664610651776071
+1024, 32768, 4096, 6.5425726614999995,  0.42593315200000004, 15.36056216985899
+1024, 32768, 8192, 13.099522134,  0.939884402, 13.937375815712283
+1024, 65536, 16, 0.1169338885,  0.224024709, 0.5219687106032577
+ration. M is 1024, N is 32768, P is 16384
+1024, 65536, 32, 0.1668176035,  0.2225756865, 0.7494870896422012
+1024, 65536, 64, 0.2665639485,  0.22993318899999998, 1.159310448653848
+1024, 65536, 128, 0.4767214395,  0.239908444, 1.9870973757805708
+1024, 65536, 512, 1.6813537255000002,  0.173371691, 9.697971541962985
+1024, 65536, 1024, 3.3703988245,  0.260158522, 12.955173632559305
+1024, 65536, 2048, 6.611981578,  0.4114160475, 16.07127776900827
+1024, 65536, 4096, 13.120494593,  0.9092460485, 14.430081510549451
+1024, 131072, 16, 0.2360452925,  0.19475072, 1.2120380992686446
+ration. M is 1024, N is 65536, P is 8192
+
+1024, 131072, 32, 0.33492389,  0.198887874, 1.6839834589412928
+1024, 131072, 64, 0.5451798345000001,  0.19743574600000002, 2.761302578409484
+1024, 131072, 128, 0.9575787675,  0.252235513, 3.796367752149159
+1024, 131072, 512, 3.4063857045,  0.41063405750000004, 8.295429086517013
+1024, 131072, 1024, 6.995469069,  0.6425722825, 10.8866648305827
+1024, 131072, 2048, 13.365342607999999,  1.2846794620000002, 10.403639976615425
+1024, 262144, 16, 0.4963174105,  0.6630396155, 0.7485486521430935
+tion. M is 1024, N is 131072, P is 4096
+
+1024, 262144, 32, 0.6842648410000001,  0.6800903014999999, 1.0061382135442791
+1024, 262144, 64, 1.119636069,  0.687559035, 1.62842172381605
+1024, 262144, 128, 1.9352627995,  0.7787304685, 2.485150996117728
+1024, 262144, 512, 7.1450485725,  1.251490463, 5.709231339543975
+2048, 1024, 16, 0.0040595235,  0.0026316865, 1.5425558857409498
+ration. M is 1024, N is 262144, P is 1024
+
+
+2048, 1024, 32, 0.005561414,  0.0026166920000000003, 2.125360569757541
+2048, 1024, 64, 0.0087966375,  0.002848306, 3.088375160534015
+2048, 1024, 128, 0.015173249,  0.0034961074999999998, 4.340040745314611
+2048, 1024, 512, 0.055597423,  0.0061130805, 9.094829194544388
+2048, 1024, 1024, 0.106272899,  0.00981868, 10.82354237025751
+2048, 1024, 2048, 0.207246453,  0.0208496705, 9.940034927650295
+2048, 1024, 4096, 0.4088070815,  0.153886508, 2.6565492115787044
+2048, 1024, 8192, 0.8116837100000001,  0.0679342145, 11.948084127770404
+2048, 1024, 16384, 1.6168448015,  0.130960815, 12.346019696807781
+2048, 1024, 32768, 3.2325398325,  0.2674203115, 12.087862041473988
+2048, 2048, 16, 0.0083598485,  0.0048680525, 1.7172880736187621
+2048, 2048, 32, 0.0113529055,  0.005710947, 1.9879199544313753
+2048, 2048, 64, 0.017636125500000002,  0.005590721999999999, 3.1545345127158897
+2048, 2048, 128, 0.030176237,  0.0061854645, 4.878572498476065
+2048, 2048, 512, 0.1105621315,  0.01159141, 9.538281494658545
+2048, 2048, 1024, 0.21102975699999998,  0.0145768905, 14.477007767877517
+2048, 2048, 2048, 0.411737065,  0.0282772005, 14.560743557340482
+2048, 2048, 4096, 0.8128585644999999,  0.0516969485, 15.723530848247261
+2048, 2048, 8192, 1.6090532525,  0.0986942325, 16.303417248824545
+2048, 2048, 16384, 3.213092568,  0.2650364545, 12.123209896018285
+2048, 2048, 32768, 6.4257788875,  0.3824118515, 16.803294307681778
+2048, 4096, 16, 0.016906632,  0.011970864500000001, 1.4123150420756998
+2048, 4096, 32, 0.023293105,  0.012394957, 1.8792404846583979
+2048, 4096, 64, 0.035768866999999996,  0.01276308, 2.8025262710881695
+2048, 4096, 128, 0.060752423,  0.0146116835, 4.157797628178847
+2048, 4096, 512, 0.2206052075,  0.02069369, 10.660506052811268
+2048, 4096, 1024, 0.421039718,  0.027360565, 15.388560799091685
+2048, 4096, 2048, 0.821296291,  0.0442788535, 18.548273635856447
+2048, 4096, 4096, 1.6221748429999998,  0.08689377649999999, 18.66848131522975
+2048, 4096, 8192, 3.2106776495,  0.1612607495, 19.909851959977402
+2048, 4096, 16384, 6.4120559035,  0.30933180849999997, 20.728731178966356
+2048, 4096, 32768, 12.8206193805,  0.8268535445, 15.505308607285047
+2048, 8192, 16, 0.032489509,  0.0246836415, 1.3162364637324684
+2048, 8192, 32, 0.0447199125,  0.024505146999999998, 1.8249191690219204
+2048, 8192, 64, 0.0702633685,  0.026323702, 2.669205436986029
+2048, 8192, 128, 0.119941201,  0.028414810999999998, 4.221080372486025
+2048, 8192, 512, 0.435106239,  0.0398312865, 10.92373049512222
+2048, 8192, 1024, 0.829028769,  0.052590416, 15.763875474953458
+2048, 8192, 2048, 1.6288210155,  0.0836710815, 19.466953053546945
+2048, 8192, 4096, 3.2290294829999997,  0.1525504935, 21.166955339937985
+2048, 8192, 8192, 6.4194543500000005,  0.29612451399999995, 21.678226713780276
+2048, 8192, 16384, 12.8178283405,  0.7297528705, 17.56461517132189
+2048, 8192, 32768, 25.644715349499997,  1.411973447, 18.162321256102203
+2048, 16384, 16, 0.066314537,  0.1735886475, 0.3820211629910879
+2048, 16384, 32, 0.0915310605,  0.17293746399999999, 0.5292725959020655
+2048, 16384, 64, 0.141983171,  0.1765169815, 0.8043598400191315
+2048, 16384, 128, 0.2439926715,  0.179851135, 1.3566368179995083
+2048, 16384, 512, 0.8725898270000001,  0.0763637195, 11.42675910384381
+2048, 16384, 1024, 1.6563371205,  0.103678185, 15.975753438392077
+2048, 16384, 2048, 3.2701619795,  0.1634068025, 20.01239807320751
+2048, 16384, 4096, 6.4457479504999995,  0.354590783, 18.177990685392405
+2048, 16384, 8192, 12.839706097499999,  0.7549786975, 17.006713090073642
+2048, 16384, 16384, 25.655413817499998,  1.334182613, 19.2293120653192
+2048, 32768, 16, 0.1327646475,  0.095641757, 1.3881452167383332
+ration. M is 2048, N is 16384, P is 32768
+2048, 32768, 32, 0.18320868350000002,  0.098239931, 1.8649105474229213
+2048, 32768, 64, 0.28366470450000003,  0.10239484, 2.770302727168674
+2048, 32768, 128, 0.490347468,  0.1093923295, 4.482466643147955
+2048, 32768, 512, 1.751871032,  0.152022814, 11.52373769373852
+2048, 32768, 1024, 3.3133711740000003,  0.20595447500000003, 16.087881431078397
+2048, 32768, 2048, 6.534506288999999,  0.3373773745, 19.368537379497567
+2048, 32768, 4096, 12.904424061,  0.6381303030000001, 20.22223987849077
+2048, 32768, 8192, 25.7397734555,  1.401992496, 18.359423127397395
+2048, 65536, 16, 0.2715469585,  0.191298967, 1.4194899363988724
+ration. M is 2048, N is 32768, P is 16384
+2048, 65536, 32, 0.36629806600000003,  0.2036612425, 1.7985654094200079
+2048, 65536, 64, 0.569680245,  0.1981195725, 2.8754364741020226
+2048, 65536, 128, 0.9815941555,  0.2269103545, 4.325911691702901
+2048, 65536, 512, 3.510729361,  0.34716633750000003, 10.112528150860824
+2048, 65536, 1024, 6.670166351,  0.4184878995, 15.938731702802794
+2048, 65536, 2048, 13.112040257,  0.8141308485000001, 16.105568633295682
+2048, 65536, 4096, 25.895113537500002,  1.407617793, 18.396409640653072
+2048, 131072, 16, 0.5730556954999999,  0.713472308, 0.8031926244010579
+ M is 2048, N is 65536, P is 8192
+
+2048, 131072, 32, 0.801887786,  0.633226096, 1.2663530310349054
+2048, 131072, 64, 1.177299997,  0.7149462465, 1.6466972206140533
+2048, 131072, 128, 2.0425234205000002,  0.7162108635, 2.8518464667214594
+2048, 131072, 512, 7.057795136499999,  0.999159065, 7.063735278726615
+2048, 131072, 1024, 13.522936423,  1.052787207, 12.844890527815847
+
+4096, 4096, 16, 0.06298828125, 0.049881144,  0.023982527, 2.0798952504045967
+4096, 4096, 32, 0.0634765625, 0.062152982999999995,  0.0242989275, 2.557848818636131
+4096, 4096, 64, 0.064453125, 0.093145819,  0.024400853, 3.8173181486729173
+4096, 4096, 128, 0.06640625, 0.1432857145,  0.027373297999999997, 5.234506799290316
+4096, 4096, 512, 0.078125, 0.4417085585,  0.0420473665, 10.505023150498616
+4096, 4096, 1024, 0.09375, 0.8413223925,  0.0599169175, 14.041483233846266
+4096, 4096, 2048, 0.125, 1.639556601,  0.0867051635, 18.90956126274994
+4096, 4096, 4096, 0.1875, 3.2370660175,  0.1517331465, 21.33394114713096
+4096, 4096, 8192, 0.3125, 6.4323254080000005,  0.2842274435, 22.63090899594993
+4096, 4096, 16384, 0.5625, 12.818848511999999,  0.5586809965, 22.944844360747823
+4096, 4096, 32768, 1.0625, 25.6335243235,  1.261561177, 20.318891220524616
+4096, 8192, 16, 0.125732421875, 0.0993653165,  0.0475671495, 2.0889483087482463
+4096, 8192, 32, 0.12646484375, 0.130522778,  0.0472299745, 2.7635580874599035
+4096, 8192, 64, 0.1279296875, 0.186895175,  0.0496346915, 3.7654142566797257
+4096, 8192, 128, 0.130859375, 0.2862690535,  0.0528413095, 5.417523831425865
+4096, 8192, 512, 0.1484375, 0.8747344930000001,  0.0726432085, 12.041517866050755
+4096, 8192, 1024, 0.171875, 1.681180038,  0.103174089, 16.294595419204526
+4096, 8192, 2048, 0.21875, 3.2672381645,  0.163064225, 20.036511163009543
+4096, 8192, 4096, 0.3125, 6.464791784,  0.2707334465, 23.878807245930734
+4096, 8192, 8192, 0.5, 12.847035887499999,  0.498757014, 25.75810570455456
+4096, 8192, 16384, 0.875, 25.61858567,  1.1197477045, 22.878890992180644
+4096, 8192, 32768, 1.625, 51.2436747825,  2.3351328725, 21.944650510460406
+4096, 16384, 16, 0.251220703125, 0.1994632285,  0.09436147, 2.1138206992748207
+4096, 16384, 32, 0.25244140625, 0.27389874000000003,  0.0938096985, 2.919727324355488
+4096, 16384, 64, 0.2548828125, 0.37263767049999996,  0.0995041985, 3.7449441944904462
+4096, 16384, 128, 0.259765625, 0.570911352,  0.1038083535, 5.4996667681469384
+4096, 16384, 512, 0.2890625, 1.7611006974999999,  0.1367670915, 12.87664070490232
+4096, 16384, 1024, 0.328125, 3.338317149,  0.1939813605, 17.20947384014249
+4096, 16384, 2048, 0.40625, 6.53575277,  0.35761011600000003, 18.276196554797682
+4096, 16384, 4096, 0.5625, 13.192445728500001,  0.5810859235, 22.70308950015376
+4096, 16384, 8192, 0.875, 25.696619382999998,  1.0212773115, 25.161255511745498
+4096, 16384, 16384, 1.5, 51.260131141,  2.0946108025, 24.472389371724343
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 16384, P is 32768
+4096, 32768, 16, 0.502197265625, 0.42020319149999996,  0.182715416, 2.299768682353546
+4096, 32768, 32, 0.50439453125, 0.545955365,  0.1883014595, 2.8993687380314754
+4096, 32768, 64, 0.5087890625, 0.746222241,  0.20395233950000002, 3.6588069684780447
+4096, 32768, 128, 0.517578125, 1.1389853435,  0.2036474855, 5.592926132643067
+4096, 32768, 512, 0.5703125, 3.5295365435,  0.2768705345, 12.747967384373291
+4096, 32768, 1024, 0.640625, 6.7067517575,  0.41952966599999997, 15.98635877516228
+4096, 32768, 2048, 0.78125, 13.075028728500001,  0.6997195494999999, 18.686098934698983
+4096, 32768, 4096, 1.0625, 25.878549924,  1.3504265050000002, 19.163242004051156
+4096, 32768, 8192, 1.625, 51.5388206365,  1.952064314, 26.402214449016356
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 32768, P is 32768
+4096, 65536, 16, 1.004150390625, 0.78301707,  0.7400095695, 1.0581174923576444
+4096, 65536, 32, 1.00830078125, 1.113222741,  0.5657235195, 1.9677858576286398
+4096, 65536, 64, 1.0166015625, 1.4536404925,  0.7638836685, 1.9029605585814404
+4096, 65536, 128, 1.033203125, 2.3368131915,  0.5959200175, 3.9213537435835506
+4096, 65536, 512, 1.1328125, 7.037481618,  0.9663023045, 7.2828985144989895
+4096, 65536, 1024, 1.265625, 13.5181740215,  0.97640028, 13.844910021430964
+4096, 65536, 2048, 1.53125, 26.145989078,  1.7577453859999999, 14.874730598780818
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 4096, N is 1048576, P is 32768
+8192, 4096, 16, 0.125732421875, 0.1377822835,  0.1711045225, 0.8052521434668684
+8192, 4096, 32, 0.12646484375, 0.14041996099999998,  0.173279302, 0.8103677668323017
+8192, 4096, 64, 0.1279296875, 0.19004319,  0.175423985, 1.0833364092145097
+8192, 4096, 128, 0.130859375, 0.28905143850000004,  0.17899234749999998, 1.6148815440280209
+8192, 4096, 512, 0.1484375, 0.8857291,  0.2065733465, 4.287722085191663
+8192, 4096, 1024, 0.171875, 1.6763140945,  0.102292557, 16.387449328302544
+8192, 4096, 2048, 0.21875, 3.2656232505,  0.1601535555, 20.39057603376155
+8192, 4096, 4096, 0.3125, 6.453977343,  0.353665994, 18.24879251184099
+8192, 4096, 8192, 0.5, 12.822343678,  0.5284220260000001, 24.265346724967888
+8192, 4096, 16384, 0.875, 25.612139259,  1.123467362, 22.797403934730415
+8192, 4096, 32768, 1.625, 51.263343954,  2.1591935095, 23.74189424359234
+8192, 8192, 16, 0.2509765625, 0.2323502945,  0.0958020845, 2.4253156464460854
+8192, 8192, 32, 0.251953125, 0.2810595585,  0.097335387, 2.8875372787083076
+8192, 8192, 64, 0.25390625, 0.377725127,  0.1017510855, 3.7122466570639188
+8192, 8192, 128, 0.2578125, 0.5780613925,  0.1062116655, 5.44254145510975
+8192, 8192, 512, 0.28125, 1.7681058580000002,  0.140362857, 12.596679034539743
+8192, 8192, 1024, 0.3125, 3.3570074285000002,  0.2500194705, 13.426983993632609
+8192, 8192, 2048, 0.375, 6.533988277500001,  0.315126907, 20.734466439896863
+8192, 8192, 4096, 0.5, 12.897275588,  0.4975410695, 25.92203212683732
+8192, 8192, 8192, 0.75, 25.626032932999998,  0.959531526, 26.706817065018452
+8192, 8192, 16384, 1.25, 51.189730834,  1.75414031, 29.182232767913533
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 8192, P is 32768
+8192, 16384, 16, 0.50146484375, 0.4687177905,  0.185908846, 2.521223710355343
+8192, 16384, 32, 0.5029296875, 0.567421197,  0.187048883, 3.0335449637515346
+8192, 16384, 64, 0.505859375, 0.7648228404999999,  0.1968345935, 3.8856119084575447
+8192, 16384, 128, 0.51171875, 1.1604606844999998,  0.2006576225, 5.78328732316162
+8192, 16384, 512, 0.546875, 3.5559989785,  0.334926647, 10.617247120680725
+8192, 16384, 1024, 0.59375, 6.7141718135,  0.459641251, 14.607417847925056
+8192, 16384, 2048, 0.6875, 13.063854021000001,  0.6531901345, 20.00007858508157
+8192, 16384, 4096, 0.875, 25.781114160999998,  1.1527208295, 22.365444868540045
+8192, 16384, 8192, 1.25, 51.254829811,  2.26838211, 22.595324475998446
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 16384, P is 32768
+8192, 32768, 16, 1.00244140625, 1.0624116715,  0.4824458865, 2.202136449348709
+8192, 32768, 32, 1.0048828125, 1.123988662,  0.8344905965, 1.3469159109931323
+8192, 32768, 64, 1.009765625, 1.611153799,  0.5052476105, 3.1888400172849507
+8192, 32768, 128, 1.01953125, 2.3121471575,  0.8270302245000001, 2.7957226822004735
+8192, 32768, 512, 1.078125, 7.1702834719999995,  0.6620978945, 10.829642461580127
+8192, 32768, 1024, 1.15625, 13.456234992999999,  1.2408560445, 10.844315948367852
+8192, 32768, 2048, 1.3125, 26.2651788585,  1.2999633555, 20.204553264809316
+8192, 32768, 4096, 1.625, 51.8257095035,  2.398314289, 21.60922350385913
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 8192, N is 1048576, P is 32768
+16384, 4096, 16, 0.251220703125, 0.277018398,  0.08809369149999999, 3.1445883727099804
+16384, 4096, 32, 0.25244140625, 0.284097874,  0.0932904695, 3.0453043652009915
+16384, 4096, 64, 0.2548828125, 0.383461259,  0.0992149665, 3.8649537718686826
+16384, 4096, 128, 0.259765625, 0.5822271415,  0.10293640700000001, 5.656182865407376
+16384, 4096, 512, 0.2890625, 1.7671814475,  0.20832323, 8.482882333861664
+16384, 4096, 1024, 0.328125, 3.359053416,  0.2007800025, 16.730019793679404
+16384, 4096, 2048, 0.40625, 6.5326533335,  0.31966205000000003, 20.43612413015558
+16384, 4096, 4096, 0.5625, 12.896140982,  0.5893704225, 21.881215089309983
+16384, 4096, 8192, 0.875, 25.7954750785,  1.010099994, 25.537546016954042
+16384, 4096, 16384, 1.5, 51.362049763,  2.345812702, 21.89520489816156
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 4096, P is 32768
+16384, 8192, 16, 0.50146484375, 0.443135818,  0.18294946150000002, 2.422176126492725
+16384, 8192, 32, 0.5029296875, 0.5693054235,  0.2053404755, 2.7724949117496323
+16384, 8192, 64, 0.505859375, 0.7617265555,  0.20096844149999998, 3.7902794578819483
+16384, 8192, 128, 0.51171875, 1.1701981505,  0.2191603145, 5.339461905636205
+16384, 8192, 512, 0.546875, 3.539612418,  0.3292600325, 10.750203695008139
+16384, 8192, 1024, 0.59375, 6.691441651,  0.4822459525, 13.875578667505767
+16384, 8192, 2048, 0.6875, 13.040620847500001,  0.6721081525, 19.40256311278712
+16384, 8192, 4096, 0.875, 25.772341966,  1.0980757835000001, 23.470458372056427
+16384, 8192, 8192, 1.25, 51.49704972,  1.8210029745, 28.27949785976585
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 8192, P is 32768
+16384, 16384, 16, 1.001953125, 0.927892005,  0.7043100675, 1.3174481635533344
+16384, 16384, 32, 1.00390625, 1.1876315185,  0.615565825, 1.9293330952867631
+16384, 16384, 64, 1.0078125, 1.523355579,  0.7242135365, 2.103461896559013
+16384, 16384, 128, 1.015625, 2.385720261,  0.6091816095, 3.9162709835546994
+16384, 16384, 512, 1.0625, 7.080627363,  0.901707199, 7.852468485171759
+16384, 16384, 1024, 1.125, 13.4893341185,  0.9741885415, 13.846738638220783
+16384, 16384, 2048, 1.25, 26.127369987,  1.447697765, 18.047530788997246
+16384, 16384, 4096, 1.5, 51.644266745500005,  2.0929869455, 24.674911067427875
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 16384, N is 1048576, P is 32768
+32768, 4096, 16, 0.502197265625, 0.4368282335,  0.177493566, 2.461093341828515
+32768, 4096, 32, 0.50439453125, 0.581275185,  0.19984963249999999, 2.908562691502573
+32768, 4096, 64, 0.5087890625, 0.7714536925,  0.195307761, 3.9499387456497437
+32768, 4096, 128, 0.517578125, 1.1777169299999999,  0.22362750850000002, 5.266422444625142
+32768, 4096, 512, 0.5703125, 3.542309844,  0.375861316, 9.424512960519726
+32768, 4096, 1024, 0.640625, 6.7109409025,  0.5143180505, 13.048231334630165
+32768, 4096, 2048, 0.78125, 13.0549596255,  0.7785844705, 16.767557176058524
+32768, 4096, 4096, 1.0625, 26.226507320499998,  1.1797799455, 22.22999926429924
+32768, 4096, 8192, 1.625, 51.7468085935,  2.8562245615, 18.117205940671624
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 4096, P is 32768
+32768, 8192, 16, 1.00244140625, 0.9740390855000001,  0.47577030350000005, 2.0472885304830717
+32768, 8192, 32, 1.0048828125, 1.1597862270000001,  0.829746426, 1.397759834400299
+32768, 8192, 64, 1.009765625, 1.521671166,  0.496742456, 3.0633000010774194
+32768, 8192, 128, 1.01953125, 2.364018495,  0.8319953085, 2.841384405474685
+32768, 8192, 512, 1.078125, 7.1001262745,  0.663937681, 10.693964927259492
+32768, 8192, 1024, 1.15625, 13.466738182,  1.3027007235, 10.337553314485435
+32768, 8192, 2048, 1.3125, 26.34234227,  1.3061164525, 20.168448394918293
+32768, 8192, 4096, 1.625, 51.780237746,  2.6395430135, 19.617122161362346
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 32768, N is 1048576, P is 32768
+65536, 4096, 16, 1.004150390625, 1.049993691,  0.47724896, 2.2000963417500166
+65536, 4096, 32, 1.00830078125, 1.1021984855,  0.832787766, 1.3235046556867887
+65536, 4096, 64, 1.0166015625, 1.5337955975,  0.4838057495, 3.170271537874727
+65536, 4096, 128, 1.033203125, 2.313458772,  0.8804101455, 2.627705716278573
+65536, 4096, 512, 1.1328125, 7.125315153000001,  0.7108746724999999, 10.023307101294991
+65536, 4096, 1024, 1.265625, 13.443908114500001,  1.4373135855, 9.353496863959059
+65536, 4096, 2048, 1.53125, 26.2543371545,  1.5043863025, 17.45185868208874
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 4096, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 4096, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 4096, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 65536, N is 1048576, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 4096, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 131072, N is 1048576, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 4096, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 262144, N is 1048576, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 4096, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 524288, N is 1048576, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 4096, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 8192, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 16384, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 32768, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 65536, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 131072, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 262144, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 524288, P is 32768
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 16
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 32
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 64
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 128
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 512
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 1024
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 2048
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 4096
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 8192
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 16384
+Matrices are too big to fit in GPU memory. Skipping this configuration. M is 1048576, N is 1048576, P is 32768

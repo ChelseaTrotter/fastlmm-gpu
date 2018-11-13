@@ -1,0 +1,3 @@
+testing single precision gemm in julia. Does include data transfer time
+            m, n, (cpu_result[3]),  (gpu_result[3]), speedup
+5120, 5120, 1.5939151759999999,  0.39268189600000003, 4.059049302339112
