@@ -48,11 +48,12 @@ nsizes = msizes;
 psizes = [16, 32, 64, 128, 512, 1024, 2048, 4096, 8192, 16384, 32768]; # ranges from 10 to 4k in log scale. 
 
 for m in msizes
-    for n in nsizes
-        for p in psizes
+    for p in psizes
+        for n in nsizes
+        
             file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "a")
-            total_doubles = (m*p + n*p + m*n)
-            if ((m*p + n*p + m*n)>get_num_doubles())
+            total_doubles = (m*n + n*p + m*p )
+            if ((m*n + n*p + m*p)>get_num_doubles())
             # if (1>0)
                 println("Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p");
                 write(file, "Matrices are too big to fit in GPU memory. Skipping this configuration. M is $m, N is $n, P is $p\n");
