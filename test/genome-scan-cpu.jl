@@ -24,7 +24,7 @@ end
 
 function calculate_r(a::CuArray,b::CuArray)
     return CuArrays.BLAS.gemm('T', 'N', a,b)
-end
+end                                                                                                                                  
 
 
 function my_isapprox(x,y)
@@ -44,7 +44,7 @@ function cpurun(a::Array, b::Array)
     a_standard = get_standardized_matrix(a)
     b_standard = get_standardized_matrix(b)
     #step 2: calculate R, matrix of corelation coefficients
-    r = calculate_r(a,b)
+    r = calculate_r(a_standard,b_standard)
     #step 3: calculate proportion of variance explained 
     return r.*r
 end
@@ -54,8 +54,8 @@ function gpurun(a::Array, b::Array)
     a_standard = get_standardized_matrix(a)
     b_standard = get_standardized_matrix(b)
 
-    d_a = CuArray(a);
-    d_b = CuArray(b);
+    d_a = CuArray(a_standard);
+    d_b = CuArray(b_standard);
     r = collect(calculate_r(d_a,d_b));
     return r.*r
 end
