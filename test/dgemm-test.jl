@@ -2,7 +2,10 @@ using CuArrays
 using Base
 using BenchmarkTools
 using LinearAlgebra
+<<<<<<< working copy
+=======
 
+>>>>>>> destination
 
 include("../src/benchmark.jl")
 
@@ -34,7 +37,7 @@ function get_max_doubles()
         gpu_mem_size = 2 - 0.3
     else 
         gpu_mem_size = 16 - 0.5
-    end
+end
     println("Total GPU memory size: $gpu_mem_size GB. \n")
     return (gpu_mem_size*gb)/size_of_double_float
 end
@@ -44,16 +47,15 @@ dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
 host = gethostname()
 
 file = open("./gemm-timing/dgemm-result@$host@$dt_now.csv", "w")
-
 thread_counts = [1,16,40,80]
 for t in thread_counts
     LinearAlgebra.BLAS.set_num_threads(t)
     core_nums = ccall((:openblas_get_num_threads64_, Base.libblas_name), Cint, ())
-    write(file, "number of cores/threads used in openblas: $core_nums");
-
-    # msizes = [1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576]; # range from 1k to 1m in log scale
-    # nsizes = msizes;
-    # psizes = [16, 32, 64, 128, 512, 1024, 2048, 4096, 8192, 16384, 32768]; # ranges from 10 to 4k in log scale. 
+    write(file, "number of cores/threads used in openblas: $core_nums\n");
+    close(file)
+    msizes = [1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576];
+    nsizes = [1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576]; # range from 1k to 1m in log scale
+    psizes = [16, 32, 64, 128, 512, 1024, 2048, 4096, 8192, 16384, 32768]; # ranges from 10 to 4k in log scale. 
 
     # for m in msizes
     #     for p in psizes
