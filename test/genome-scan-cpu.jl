@@ -14,21 +14,21 @@ include("../src/benchmark.jl")
 #r:                                                , 51200, 102400, 204800, 409600, 819200, 1638400
 
 function get_standardized_matrix(m)
-    return (m .- mean(m)) ./ std(m)
+    return (m .- mean(m)) ./ std(m);
 end
 
 function calculate_r(a::Array,b::Array)
-    return LinAlg.BLAS.gemm('T', 'N', a,b)
+    return LinAlg.BLAS.gemm('T', 'N', a,b);
     # return a' * b
 end
 
 function calculate_r(a::CuArray,b::CuArray)
-    return CuArrays.BLAS.gemm('T', 'N', a,b)
+    return CuArrays.CUBLAS.gemm('T', 'N', a,b);
 end                                                                                                                                  
 
 
 function my_isapprox(x,y)
-    return isapprox(x,y, atol=1e-7)
+    return isapprox(x,y, atol=1e-7);
 end
 
 function check_correctness(a, b)
@@ -39,72 +39,97 @@ function check_correctness(a, b)
     end
 end
 
+# function my_kernel()
+# #step 1: calculate standardized version of Y and G ( mean => m - mean => m - mean / standard deviation of m)
+
+
+# #step 2: calculate R, matrix of corelation coefficients (gemm)
+
+# #step 3: calculate proportion of variance explained (square every entry )
+
+# end
+
 function cpurun(a::Array, b::Array)
-    #step 1: calculate standardized version of Y and G
-    a_standard = get_standardized_matrix(a)
-    b_standard = get_standardized_matrix(b)
+    a_std = get_standardized_matrix(a);
+    b_std = get_standardized_matrix(b);
     #step 2: calculate R, matrix of corelation coefficients
-    r = calculate_r(a_standard,b_standard)
+    r = calculate_r(a_std,b_std);
     #step 3: calculate proportion of variance explained 
-    return r.*r
+    return r.*r;
 end
+
+
 
 function gpurun(a::Array, b::Array)
-
-    a_standard = get_standardized_matrix(a)
-    b_standard = get_standardized_matrix(b)
-
-    d_a = CuArray(a_standard);
-    d_b = CuArray(b_standard);
+    a_std = get_standardized_matrix(a);
+    b_std = get_standardized_matrix(b);
+    d_a = CuArray(a_std);
+    d_b = CuArray(a_std);
     r = collect(calculate_r(d_a,d_b));
-    return r.*r
+    return r.*r;
 end
 
 
+n_max = 12800;
+m_max = 25600;
 
-
-n_max = 12800
-m_max = 25600
 # Matrix size of less than 1600 is very fast, basically have no comparison value to the profiling. But they are kept in here since that is what actual data may look like. 
-matrix_size_range = [#=100, 200, 400, 800,1600,3200,=# 6400#=,12800,25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
+matrix_size_range = [100#=, 200, 400, 800,1600,3200,6400,12800,25600, 51200, 102400, 204800, 409600, 819200, 1638400=#]
 
-dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS")
-host = gethostname()
+dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS");
+host = gethostname();
 
-file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "w")
+file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "w");
 
-for i in matrix_size_range
-
-    n = 640 
-    m = 640
-    r = 640
-    
+for n in matrix_size_range
+    m = n
+    r = n
     if(n > n_max)
-        n = n_max
+        n = n_max;
     end
     if(m > m_max)
-        m = m_max
+        m = m_max;
     end
 
-    file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "a")
+    file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "a");
 
-    println("*************************** n: $n,m: $m, r: $r******************************")
+    println("*************************** n: $n,m: $m, r: $r******************************");
     
     srand(123);
 
-    Y = rand(n, m)
-    G = rand(n, r)
+    Y = rand(n, m);
+    G = rand(n, r);
 
-    a_std = get_standardized_matrix(Y);
-    b_std = get_standardized_matrix(G);
+    #step 1: calculate standardized version of Y and G
 
-    cpu_result = benchmark(10, cpurun, a_std, b_std)
-    gpu_result = benchmark(10, gpurun, a_std, b_std)
-    speedup = cpu_result[3]/gpu_result[3]
+    std_y_time = @elapsed y_std = get_standardized_matrix(Y);
+    std_g_time = @elapsed g_std = get_standardized_matrix(G);
+    cpu_r_time = @elapsed r1 = calculate_r(y_std,g_std)
+
+    d_y = CuArray(y_std);
+    d_g = CuArray(g_std);
+    gpu_r_time = @elapsed r2 = collect(calculate_r(d_y,d_g));
+    sq_time = @elapsed cpu_r_sq = r1 * r1 
+
+    total_time = std_y_time + std_g_time + cpu_r_time + sq_time
+
+
+    println("Getting standard Y: $std_y_time seconds $((std_y_time/total_time)*100) %
+             Getting standard G: $std_g_time seconds $((std_g_time/total_time)*100) %
+             CPU gemm: $cpu_r_time seconds           $((cpu_r_time/total_time)*100) %
+             GPU gemm: $gpu_r_time seconds           $(gpu_r_time/cpu_r_time)  speedup ratio
+             R square: $sq_time seconds              $((sq_time/total_time)*100) % ")
+
+    
+
+    cpu_result = benchmark(10, cpurun, Y, G);
+    gpu_result = benchmark(10, gpurun, Y, G);
+    speedup = cpu_result[3]/gpu_result[3];
 
     println("$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+    # println("std_time for Y is $std_time")
     write(file, "$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
-    close(file)
+    close(file);
 
 end
 
