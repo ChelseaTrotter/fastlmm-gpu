@@ -12,6 +12,7 @@ import CuArrays.CuArray
 import Base.@elapsed 
 
 
+
 #n: 100, 200, 400, 800, 1600, 3200, 6400, 12800, 
 #m:                                            25600, 
 #r:                                                , 51200, 102400, 204800, 409600, 819200, 1638400
@@ -96,7 +97,7 @@ matrix_size_range = [100#=, 200, 400, 800,1600,3200,6400,12800,25600, 51200, 102
 dt_now = Dates.format(Dates.now(), "yyyy-mm-ddTHH-MM-SS");
 host = gethostname();
 
-file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "w");
+# file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "w");
 
 for n in matrix_size_range
     m = n
@@ -108,7 +109,7 @@ for n in matrix_size_range
         m = m_max;
     end
 
-    file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "a");
+    # file = open("./timing/genome-scan-timing@$host@$dt_now.csv", "a");
 
     println("*************************** n: $n,m: $m, r: $r******************************");
     
@@ -145,12 +146,12 @@ for n in matrix_size_range
 
     println("$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
     # println("std_time for Y is $std_time")
-    write(file, "$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
-    close(file);
+    # write(file, "$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");
+    # close(file);
 
 end
 
-close(file)
+# close(file)
 
 
 
