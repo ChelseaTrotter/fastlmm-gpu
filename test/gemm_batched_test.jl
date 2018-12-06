@@ -5,7 +5,8 @@
 
 using CuArrays
 using Base.Test
-
+using LinearAlgebra
+import CuArrays.CuArray
 include("../src/benchmark.jl")
 
 function run_cpu_gemm(batchsize::Int64,

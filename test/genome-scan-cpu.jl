@@ -8,6 +8,9 @@
 
 include("env.jl")
 include("../src/benchmark.jl")
+import CuArrays.CuArray
+import Base.@elapsed 
+
 
 #n: 100, 200, 400, 800, 1600, 3200, 6400, 12800, 
 #m:                                            25600, 
@@ -24,7 +27,9 @@ end
 
 function calculate_r(a::CuArray,b::CuArray)
     return CuArrays.CUBLAS.gemm('T', 'N', a,b);
-end                                                                                                                                  
+
+end   
+
 
 
 function my_isapprox(x,y)
@@ -58,17 +63,29 @@ function cpurun(a::Array, b::Array)
     return r.*r;
 end
 
-
-
 function gpurun(a::Array, b::Array)
     a_std = get_standardized_matrix(a);
     b_std = get_standardized_matrix(b);
     d_a = CuArray(a_std);
     d_b = CuArray(a_std);
-    r = collect(calculate_r(d_a,d_b));
-    return r.*r;
+    d_r = calculate_r(d_a,d_b);
+    #Get total number of threads 
+    ndrange = prod(size(d_r))
+    #Get maximum number of threads per block
+    dev = device()
+    threads = attribute(dev, CUDAdrv.WARP_SIZE)
+    blocks = min(ceil(ndrange/threads), attribute(dev, CUDAdrv.MAX_GRID_DIM_X))
+    @cuda blocks=blocks threads=threads square_kernel(d_r)
+    return Array(d_r)
 end
 
+function square_kernel(a) 
+    i = (blockIdx().x-1) * blockDim().x + threadIdx().x
+    if(i < ndrange+1)
+        a[i] = a[i] * a[i]
+    end
+    return 
+end
 
 n_max = 12800;
 m_max = 25600;
@@ -122,8 +139,8 @@ for n in matrix_size_range
 
     
 
-    cpu_result = benchmark(10, cpurun, Y, G);
-    gpu_result = benchmark(10, gpurun, Y, G);
+    cpu_result = benchmark(1, cpurun, Y, G);
+    gpu_result = benchmark(1, gpurun, Y, G);
     speedup = cpu_result[3]/gpu_result[3];
 
     println("$m, $n, $r, $(cpu_result[3]),  $(gpu_result[3]), $speedup\n");

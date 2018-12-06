@@ -28,6 +28,8 @@ check_pkg_installation("env.jl")
 #using Statistics
 # using Profile
 using CuArrays
+using CUDAnative
+using CUDAdrv
 # using ProfileView
 using BenchmarkTools
 
