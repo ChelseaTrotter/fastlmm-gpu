@@ -68,7 +68,7 @@ function gpurun(a::Array, b::Array)
     a_std = get_standardized_matrix(a);
     b_std = get_standardized_matrix(b);
     d_a = CuArray(a_std);
-    d_b = CuArray(a_std);
+    d_b = CuArray(b_std);
     d_r = calculate_r(d_a,d_b);
     #Get total number of threads 
     ndrange = prod(size(d_r))
